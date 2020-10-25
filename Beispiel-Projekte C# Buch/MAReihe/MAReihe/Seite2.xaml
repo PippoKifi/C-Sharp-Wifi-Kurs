@@ -1,0 +1,18 @@
+﻿<Page
+    x:Class="MAReihe.Seite2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MAReihe"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock FontSize="24" HorizontalAlignment="Center" Margin="10">Das ist Seite 2</TextBlock>
+            <Button Width="200" Height="50" HorizontalAlignment="Center" Click="bm_Click">
+                Zurück zur Startseite</Button>
+            <Button Width="200" Height="50" HorizontalAlignment="Center" Click="b3_Click">Zur Seite 3</Button>
+        </StackPanel>
+    </Grid>
+</Page>
