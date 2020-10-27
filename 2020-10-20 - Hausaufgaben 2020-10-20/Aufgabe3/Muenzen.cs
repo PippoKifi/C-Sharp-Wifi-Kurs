@@ -22,22 +22,32 @@ namespace Aufgabe3
             int eingegebenerCenteBetrag = 0;
             Boolean eingabePrüfung = true;
             Boolean centBetragGültig = false;
+                   
+           do
+           {
 
-            do
-            {
-                
-                {
-                    Console.WriteLine("Geben sie eine Cent betrag ein (5, 10, 20, 50, 100, 200)");
+            Console.WriteLine("Geben sie eine Cent betrag ein (5, 10, 20, 50, 100, 200)");
+            string eingegebenerCenteBetrag_String = Console.ReadLine();
+                    
+                    for (int i = 0; eingegebenerCenteBetrag_String.Length < length; i++)
+			        {
+                        if (!char.IsNumber(eingegebenerCenteBetrag_String.IndexOf(i))) //Ist der 
+	                    {
+                        eingabePrüfung = false
+                        break
+                        }
+                    }
+                    
+                    //try //Eigegebener Wert gültig?
+                    //{
+                    //    eingegebenerCenteBetrag = int.Parse(Console.ReadLine());
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    Console.WriteLine($"Der eingegebene betrag war '{eingegebenerCenteBetrag}', gültig sind aber nut folgende eingaben = '5, 10, 20, 50, 100, 200'");
+                    //    eingabePrüfung = false;
+                    //}
 
-                    try //Eigegebener Wert gültig?
-                    {
-                        eingegebenerCenteBetrag = int.Parse(Console.ReadLine());
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine($"Der eingegebene betrag war '{eingegebenerCenteBetrag}', gültig sind aber nut folgende eingaben = '5, 10, 20, 50, 100, 200'");
-                        eingabePrüfung = false;
-                    }
 
                     if (eingabePrüfung)
                     {
@@ -73,16 +83,20 @@ namespace Aufgabe3
                                 break;
                         }
                     }
-                }
+                
                 
 
             } while (!centBetragGültig);
 
-            if (centBetragGültig) //Wurde der Betrag richtig eingegeben?
+            if (centBetragGültig && eingabePrüfung) //Wurde der Betrag richtig eingegeben?
             {
                 Console.WriteLine($"Der eingegebene betrag '{eingegebenerCenteBetrag}' war RICHTIG!!!");
-
             }
+            else
+	        {
+                Console.WriteLine($"Die eingabe ist nicht gültig, bitte probieren sie nocheinmal");
+	        } 
+
 
 
         }
