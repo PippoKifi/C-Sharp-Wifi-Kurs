@@ -97,11 +97,11 @@ namespace Wifi.ToolLibrary.ConsoleIo
         }
 
         /// <summary>
-        /// Reads an DateTime value from console input. The input format must be [dd.MM.yyyy hh:mm:ss].
+        /// Reads an DateTime value from console input. The input format can be defind from the user (Flexible).
         /// </summary>
         /// <param name="inputPrompt">Prompt for the user</param>
         /// <returns></returns>
-        public static DateTime GetDateTime(string inputPrompt)
+        public static DateTime GetDateTime(string inputPrompt, string DateTimeFormat)
         {
             DateTime userInputValue = DateTime.MinValue;
             bool userInputIsValid = false;
@@ -127,6 +127,17 @@ namespace Wifi.ToolLibrary.ConsoleIo
 
             return userInputValue;
         }
+
+        /// <summary>
+        /// Reads an DateTime value from console input. The input format must be [dd.MM.yyyy hh:mm:ss].
+        /// </summary>
+        /// <param name="inputPrompt">Prompt for the user</param>
+        /// <returns></returns>
+        public static DateTime GetDateTime(string inputPrompt)
+        { 
+        return GetDateTime(inputPrompt, "dd.MM.yyyy hh:mm:ss")
+        }
+
 
         /// <summary>
         /// Reads an string value from console input.
