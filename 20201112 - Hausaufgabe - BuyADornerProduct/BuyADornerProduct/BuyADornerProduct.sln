@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30709.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyADornerProduct", "BuyADornerProduct\BuyADornerProduct.csproj", "{8D9401FD-9937-48C5-B577-62FB1C7E5428}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrundlagenKlassen", "..\..\20201110 - KursOnline\GrundlagenKlassen\GrundlagenKlassen\GrundlagenKlassen.csproj", "{652B981A-1325-44EC-A68D-0048C0509296}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WertUndVerweisTypen", "..\..\20201110 - KursOnline\WertUndVerweisTypen\WertUndVerweisTypen\WertUndVerweisTypen.csproj", "{6A2BD26B-981D-48F3-A0EB-384183D35BB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeilnehmerVerwaltung_v2", "..\..\20201109 - KursOnline\TeilnehmerVerwaltung_v2\TeilnehmerVerwaltung_v2\TeilnehmerVerwaltung_v2.csproj", "{125DAB93-7C61-4742-9A16-9F8A957C256C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteReadSearch_InTextFile", "WriteReadSearch_InTextFile\WriteReadSearch_InTextFile.csproj", "{471DB215-223C-424B-A6AB-9953F6784CA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D9401FD-9937-48C5-B577-62FB1C7E5428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9401FD-9937-48C5-B577-62FB1C7E5428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9401FD-9937-48C5-B577-62FB1C7E5428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9401FD-9937-48C5-B577-62FB1C7E5428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{652B981A-1325-44EC-A68D-0048C0509296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{652B981A-1325-44EC-A68D-0048C0509296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{652B981A-1325-44EC-A68D-0048C0509296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{652B981A-1325-44EC-A68D-0048C0509296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A2BD26B-981D-48F3-A0EB-384183D35BB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A2BD26B-981D-48F3-A0EB-384183D35BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A2BD26B-981D-48F3-A0EB-384183D35BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A2BD26B-981D-48F3-A0EB-384183D35BB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125DAB93-7C61-4742-9A16-9F8A957C256C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125DAB93-7C61-4742-9A16-9F8A957C256C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125DAB93-7C61-4742-9A16-9F8A957C256C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125DAB93-7C61-4742-9A16-9F8A957C256C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{471DB215-223C-424B-A6AB-9953F6784CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{471DB215-223C-424B-A6AB-9953F6784CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{471DB215-223C-424B-A6AB-9953F6784CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{471DB215-223C-424B-A6AB-9953F6784CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF297FEE-3C99-4E08-9510-3EB364BA27DE}
+	EndGlobalSection
+EndGlobal
