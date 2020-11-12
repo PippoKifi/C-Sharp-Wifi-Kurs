@@ -56,7 +56,7 @@ namespace BuyADornerProduct
 
         private void CreateNewUsers(string userName, string userPassword)
         {
-            ThisIsAnDornerCustomer
+            //ThisIsAnDornerCustomer
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace BuyADornerProduct
         /// <returns>Ergebnis von Prüfung</returns>
         static bool IsTheUserRegistered(string userName)
         {
-            TextDatei
+            //TextDatei
 
 
             return false;
