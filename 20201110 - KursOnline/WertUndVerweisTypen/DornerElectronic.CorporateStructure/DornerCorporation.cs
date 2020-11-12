@@ -2,17 +2,11 @@
 {
     public class DornerCorporation
     {
-        //Teams
-        public DornerTeams Teams;
+        public DornerTeams Teams; //Teams
+        public DornerHierarchien Hierarchien;  //Hierarchien
+        public DornerMitarbeiter Mitarbeiter; //Mitarbeiter
+        public DornerProducts Products; //Dorner Produkte
 
-        //Hierarchien
-        public DornerHierarchien Hierarchien;
-
-        //Mitarbeiter
-        public DornerMitarbeiter Mitarbeiter;
-
-        //Dorner Produkte
-        public DornerProducts Products;
 
     }
 }
