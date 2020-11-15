@@ -75,7 +75,6 @@ namespace GrundlagenKapselung
                 return _currentSpeed;
             }
         }
-
         public void SpeedUp(int delta)
         {
             if (_currentSpeed + delta > _maxSpeed || _currentSpeed + delta < 0)

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artikel", "Artikel\Artikel.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrundlagenKapselung", "..\GrundlagenKapselung\GrundlagenKapselung\GrundlagenKapselung.csproj", "{13546E4C-DD44-4D2A-B459-479F0C1DC4E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrundlagenKlassen", "..\..\20201110 - KursOnline\GrundlagenKlassen\GrundlagenKlassen\GrundlagenKlassen.csproj", "{652B981A-1325-44EC-A68D-0048C0509296}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{13546E4C-DD44-4D2A-B459-479F0C1DC4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13546E4C-DD44-4D2A-B459-479F0C1DC4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13546E4C-DD44-4D2A-B459-479F0C1DC4E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{652B981A-1325-44EC-A68D-0048C0509296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{652B981A-1325-44EC-A68D-0048C0509296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{652B981A-1325-44EC-A68D-0048C0509296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{652B981A-1325-44EC-A68D-0048C0509296}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
