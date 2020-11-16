@@ -11,7 +11,9 @@ namespace MyArtikel
         static void Main(string[] args)
         {
 
-            Artikel MeinArtikel = new Artikel();
+            Artikel MeinArtikel = new Artikel("");
+            Console.WriteLine(MeinArtikel.GetInfoString());
+
         }
     }
 }
