@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyArtikel
+namespace EmloyeeBeispiel
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Artikel meinArtikel = new Artikel("Die Bibel", 200);
-            Console.WriteLine(meinArtikel.GetInfoString());
+            Emloyee mitarbeiter = new Emloyee("Pippo", "Kifi", 2020/11/11 8:12:12, 1800);
+
         }
     }
 }

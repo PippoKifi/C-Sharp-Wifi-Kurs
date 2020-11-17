@@ -9,23 +9,26 @@ namespace MyArtikel
         //> Keine Consolen angaben!!!
         //#### Spezification Ende
 
-        //Interne eigenschaften
+        //Interne Eigenschaften / Felder
         private string _bezeichung;
         private Guid _code;
         private int _preis_euro;
         private ArtikelStatus _artikelStatus;
 
         //Konstruktor
-        public Artikel(string gesuchterArtikel)
+        public Artikel(string buchBezeichnung, int preis)
         {
-            _bezeichung = gesuchterArtikel;
+            _bezeichung = buchBezeichnung;
             _code = Guid.NewGuid();
-            _preis_euro = 0;
+            _preis_euro = preis;
             _artikelStatus = ArtikelStatus.Unknown;
         }
 
-        //Eigenschaften (Gekapsel)
+
+        //Eigenschaften / Property (Gekapselung)
+        //Nur für den gebrauch von aussen gedacht!
         public string Bezeichung
+
         {
             get 
             {
@@ -33,7 +36,7 @@ namespace MyArtikel
             }
             set
             {
-                if (!string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value)) //'value' ist immer derselbe typ von der Eigenschaft
                 {
                     _bezeichung = value;
                 }
@@ -44,13 +47,6 @@ namespace MyArtikel
             get 
             {
                 return _code;
-            }
-            set
-            {
-                //if (!string.IsNullOrWhiteSpace(value))
-                //{
-                _code = value;
-                //}
             }
         }
         public int Preis_euro
@@ -88,16 +84,13 @@ namespace MyArtikel
         /// Liefert das Ergebniss nach außen
         /// </summary>
         /// <returns></returns>
-        public string[] GetInfoString()
+        public string GetInfoString()
         {
-            string[] infoToTheOutside = new string[4];
-            infoToTheOutside[1] = _bezeichung;
-            //infoToTheOutside[2] = _code;
-            //infoToTheOutside[3] = _preis_euro;
-            //infoToTheOutside[4] = _artikelStatus;
-
-            return infoToTheOutside;
+            string returnString = "";
+        return returnString = "Bezeichnung : " + _bezeichung + " | Code: " + _code + " | Preis (Euro): " + _preis_euro + " | Artikel Status: " + _artikelStatus;
         }
+        
+            
 
 
         //Test Artikel
