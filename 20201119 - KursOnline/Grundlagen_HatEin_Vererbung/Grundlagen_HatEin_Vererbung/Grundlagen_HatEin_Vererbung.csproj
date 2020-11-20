@@ -43,9 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Plane_drives.cs" />
+    <Compile Include="Plane_Drives.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="Plane.cs" />
+    <Compile Include="Plane_Producer.cs" />
     <Compile Include="Power.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

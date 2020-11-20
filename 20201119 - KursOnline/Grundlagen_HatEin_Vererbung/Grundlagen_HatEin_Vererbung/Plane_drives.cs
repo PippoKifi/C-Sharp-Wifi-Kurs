@@ -1,9 +1,9 @@
 ﻿namespace Grundlagen_HatEin_Vererbung
 {
-    enum Plane_drives
+    public enum Plane_Drives
     {
-        propeller,
-        jets,
-        without_Drive,
+        Propeller,
+        Jets,
+        Without_Drive,
     }
 }

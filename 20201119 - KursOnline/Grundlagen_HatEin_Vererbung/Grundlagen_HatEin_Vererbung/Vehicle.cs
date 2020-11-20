@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Grundlagen_HatEin_Vererbung
 {
@@ -12,28 +8,34 @@ namespace Grundlagen_HatEin_Vererbung
         private string _description;
         private vehicleState _state;
         private int _maxSpeed = 180;
+        private int _gewicht;
+
 
         //'ctor' shortcut
-        Vehicle() //Standard Fahhrad
+        public Vehicle() //Standard Fahhrad
         {
             _model = "Fahhrad M+F";
             _description = "Unisex Fahhrad";
             _state = vehicleState.Unknown;
         }
+
         //'ctor' shortcut
-        Vehicle(string model, String descrition, int maxSpeed) //Änderbahrer Konstruktor 
+        public Vehicle(string model, string descrition, int maxSpeed) //Änderbahrer Konstruktor 
         {
             _model = model;
             _description = descrition;
             _state = vehicleState.Unknown;
         }
 
+
         public Vehicle(string Model) {_model = Model;}
         public string Description { get => _description;}
         public int MaxSpeed { get => _maxSpeed;}
         internal vehicleState State { get => _state; set => _state = value; }
+        public int Gewicht { get { return _gewicht; } set { _gewicht = value; } }
 
-       public string GetInfoString()
+
+        public string GetInfoString()
         {
             return $"{_model} - {_description}\nMax. Speed: {_maxSpeed}";
         }
@@ -46,7 +48,7 @@ namespace Grundlagen_HatEin_Vererbung
             }
             else
             {
-                Console.WriteLine($"FEHLER: FAS FZ {_model} kann sich leider nicht bewegen");
+                Console.WriteLine($"FEHLER: Das Fahrzeug {_model}-{_description} kann leider nicht bewegen werden (Status: {_state})");
             }
             return "";
         } 

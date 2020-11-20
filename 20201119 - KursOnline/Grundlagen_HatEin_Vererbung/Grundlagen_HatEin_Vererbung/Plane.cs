@@ -1,50 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Grundlagen_HatEin_Vererbung
 {
     class Plane : Vehicle
     {
         //ToDo class Plane Implementieren
-        private string _producer;
-        private string _model;
-        private Plane_drives _antrieb;
+        private Plane_Drives _driveTechnology;
         private int _numberOfEngines;
+        private Plane_Producer _producer;
 
-        public string Producer
+        public Plane(string model, string descrition, int maxSpeed, Plane_Drives antrieb,int numberOfEngines, Plane_Producer producer) 
+            : base(model, descrition, maxSpeed)
+        {
+            _driveTechnology = antrieb;
+            _numberOfEngines = numberOfEngines;
+            _producer = Producer;
+        }
+
+        public Plane_Producer Producer
         {
             get { return _producer; }
-            set { _producer = value; }
         }
 
-       public Plane() : base()
+        public Plane_Drives DriveTechnology
         {
-
-        }
-
-
-        public string Model
-        {
-            get { return _model; }
-            set { _model = value; }
+            get { return _driveTechnology; }
         }
 
         public int NumberOfEngines
         {
             get { return _numberOfEngines; }
-            set { _numberOfEngines = value; }
         }
 
-        public Plane_drives Antrieb
+        public string SpeedControl(int amount)
         {
-            get { return _antrieb; }
-            set { _antrieb = value; }
+            maxSpeed + amount
+            return $"Akt. Speed {}";
         }
-
-
 
     }
 }

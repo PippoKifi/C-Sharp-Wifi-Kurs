@@ -1,6 +1,6 @@
 ﻿namespace Grundlagen_HatEin_Vererbung
 {
-    enum Power
+    public enum Power
     {
         On,
         Off,
