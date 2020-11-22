@@ -1,0 +1,8 @@
+﻿
+
+Ziel von Basis-Klasse
+> So viel wie möglich abgehandelt werden?
+
+
+Ziel von Erben
+> So wenig wie möghlich (spezial) 

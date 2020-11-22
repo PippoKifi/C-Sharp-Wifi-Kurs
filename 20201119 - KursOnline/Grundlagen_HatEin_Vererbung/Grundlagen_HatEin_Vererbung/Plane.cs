@@ -8,10 +8,10 @@ namespace Grundlagen_HatEin_Vererbung
         private int _numberOfEngines;
         private Plane_Producer _producer;
 
-        public Plane(string model, string descrition, int maxSpeed, Plane_Drives antrieb,int numberOfEngines, Plane_Producer producer) 
-            : base(model, descrition, maxSpeed)
+        public Plane(string model, string descrition, int maxSpeed, int gewicht, int seats, Plane_Drives _driveTechnology,  int numberOfEngines, Plane_Producer producer) 
+            : base(model, descrition, maxSpeed, gewicht, seats)
         {
-            _driveTechnology = antrieb;
+            _driveTechnology = _driveTechnology;
             _numberOfEngines = numberOfEngines;
             _producer = Producer;
         }
@@ -31,11 +31,18 @@ namespace Grundlagen_HatEin_Vererbung
             get { return _numberOfEngines; }
         }
 
-        public string SpeedControl(int amount)
+        public override string GetInfoString()
         {
-            maxSpeed + amount
-            return $"Akt. Speed {}";
+            return base.GetInfoString() +
+                $"\nDriveTechnology: {_driveTechnology}\nNumberOfEngines: {_numberOfEngines}\nProducer: {_producer}";
         }
+
+        public override string Drive(bool increase, int speedControl)
+        {
+            return base.Drive(increase, speedControl) + " - Aus class Plane aufgerufen";
+
+        }
+
 
     }
 }
