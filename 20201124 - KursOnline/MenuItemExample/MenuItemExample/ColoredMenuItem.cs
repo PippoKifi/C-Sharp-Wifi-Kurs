@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace MenuItemExample
 {
-    class ColoredMenuItem : MenuItem
+    public class ColoredMenuItem : MenueItem
     {
+
+        //TODO Lokale Variablen anlegen
+
+
+        //TODO Konstruktor anlegen
+        ColoredMenuItem()
+            : base ()
+        {
+
+        }
+
     }
 }

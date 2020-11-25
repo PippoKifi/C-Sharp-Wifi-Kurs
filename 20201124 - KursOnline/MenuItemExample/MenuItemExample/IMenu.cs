@@ -13,5 +13,6 @@ namespace MenuItemExample
         void Add(IMenueItem menuItem);
         void Remove(IMenueItem imenuItem);
         void Display(int wigth);
+        void SelectItem(int item);
     }
 }

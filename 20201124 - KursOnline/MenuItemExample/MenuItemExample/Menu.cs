@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MenuItemExample
 {
-    class Menu : IMenu
+    public class Menu : IMenu
     {
         public int Count => throw new NotImplementedException();
 
@@ -21,6 +21,11 @@ namespace MenuItemExample
         }
 
         public void Remove(IMenueItem imenuItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SelectItem(int item)
         {
             throw new NotImplementedException();
         }
