@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace MenuItemExample
 {
-    class ColoredMenuItem : MenuItem
+    public class ColoredMenuItem : MenuItem
     {
+
+        //TODO Lokale Variablen anlegen
+        ConsoleColor _itemcolor;
+
+        //TODO Konstruktor anlegen
+        ColoredMenuItem(string descriprion, char code, int order, bool action, ConsoleColor itemcolor )
+            : base (descriprion, code, order, action)
+        {
+            _itemcolor = itemcolor;
+        }
+
+        public override void Display(int width)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

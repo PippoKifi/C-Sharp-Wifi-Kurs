@@ -6,13 +6,47 @@ using System.Threading.Tasks;
 
 namespace MenuItemExample
 {
-    class MenuItem : IMenueItem
+   public class MenuItem : IMenueItem
     {
-        public string Descriprion => throw new NotImplementedException();
 
-        public char Code => throw new NotImplementedException();
+        //TODO Kapseln (Lokale Variabeln anlegen)?
+        string _description;
+        char _code;
+        int _order;
+        bool _action;
 
-        public void Display(int width)
+        //TODO Konstrucktor anlegen?
+        public MenuItem(string descriprion, char code, int order, bool action)
+        {
+            _description = descriprion;
+            _code = code;
+            _order = order;
+            _action = action;
+        }
+
+
+
+        //Warum Public?
+        public string Descriprion
+        {
+            set { _description = value;  }
+        }
+        public char Code
+        {
+            get { return _code ;  }
+        }
+        public int Order 
+        {
+            set { _order = value;  } 
+        }
+        public bool Action
+        {
+            set { _action = value; }
+        }
+
+        string IMenueItem.Descriprion => throw new NotImplementedException();
+
+        public virtual void Display(int width)
         {
             throw new NotImplementedException();
         }
