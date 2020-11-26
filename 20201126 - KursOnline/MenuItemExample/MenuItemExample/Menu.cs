@@ -51,7 +51,7 @@ namespace MenuItemExample
 
                 foreach (var menuItem in _items)
                 {
-                    if (userInput.KeyChar == menuItem.Code)
+                    if (userInput.KeyChar = menuItem.Code)
                     {
                         Console.WriteLine($"Ihre Auswahl war {menuItem}");
                         return menuItem;
