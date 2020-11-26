@@ -7,6 +7,10 @@
         int Order { set; }
         bool Action { set;  }
 
+        int Order { set; }
+
+        bool Action { set;  }
+
         void Display(int width);
     }
 }

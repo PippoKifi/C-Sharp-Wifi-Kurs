@@ -13,7 +13,7 @@ namespace MenuItemExample
         private ConsoleColor _itemcolor;
 
         //TODO Konstruktor anlegen
-        ColoredMenuItem(string descriprion, char code, ConsoleColor itemcolor)
+        public ColoredMenuItem(string descriprion, ConsoleKey code, ConsoleColor itemcolor)
             : base(descriprion, code)
         {
             _itemcolor = itemcolor;

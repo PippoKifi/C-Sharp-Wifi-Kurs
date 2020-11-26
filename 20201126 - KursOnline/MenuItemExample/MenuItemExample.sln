@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuItemExample", "MenuItem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstrakteKlassen", "..\..\..\..\sw_developer_2020_Atilla\src\20201124\AbstrakteKlassen\AbstrakteKlassen\AbstrakteKlassen.csproj", "{9503117D-E615-407B-A1FA-5075BFA5F0D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grundlagen_HatEin_Vererbung", "..\..\20201123 - KursOnline\Grundlagen_HatEin_Vererbung\Grundlagen_HatEin_Vererbung\Grundlagen_HatEin_Vererbung.csproj", "{310681E8-12D0-496A-977E-7EC4C5B8A537}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{9503117D-E615-407B-A1FA-5075BFA5F0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9503117D-E615-407B-A1FA-5075BFA5F0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9503117D-E615-407B-A1FA-5075BFA5F0D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{310681E8-12D0-496A-977E-7EC4C5B8A537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{310681E8-12D0-496A-977E-7EC4C5B8A537}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{310681E8-12D0-496A-977E-7EC4C5B8A537}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{310681E8-12D0-496A-977E-7EC4C5B8A537}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

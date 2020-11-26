@@ -11,7 +11,7 @@ namespace MenuItemExample
 
         public EmptyItem()
         {
-            //Nothing to do
+            //Nothing to do -> Standard Konstruktor 
         }
 
         public string Descriprion

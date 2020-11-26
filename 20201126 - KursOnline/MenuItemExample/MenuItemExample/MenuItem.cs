@@ -13,10 +13,10 @@ namespace MenuItemExample
         char _code;
 
         //TODO Konstrucktor anlegen?
-        public MenuItem(string descriprion, char code)
+        public MenuItem(string descriprion, ConsoleKey code)
         {
             _description = descriprion;
-            _code = code;
+            _code = code.ToString().ToLower()[0]; //Immer nur klene Buchstaben für die Prüfung
         }
 
         //Warum Public?
@@ -24,9 +24,9 @@ namespace MenuItemExample
         {
             get { return _description ;  }
         }
-        public char Code
+        public ConsoleKey Code
         {
-            get { return _code ;  }
+            get { return ConsoleKey.Spacebar;  }
         }
 
         public virtual void Display(int width)
@@ -34,7 +34,7 @@ namespace MenuItemExample
             //Daten laden ................L
             //Programm beenden ...........Q
             Console.Write($"{_description} {new string('.',width - _description.Length)}");
-
+            Console.Write($"Was für ein Menü wünschen sie? Bitte treffen sie eine auswahl");
         }
     }
 }
