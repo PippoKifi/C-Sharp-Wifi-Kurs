@@ -43,12 +43,11 @@ namespace MenuItemExample
 
         public IMenueItem SelectItem(string inputPrompt)
         {
-            ConsoleKeyInfo userInput;
 
             while (true)
             {
                 Console.WriteLine(inputPrompt);
-                userInput = Console.ReadKey(true); //(rrue) -> Eingaben nicht darstellen
+               var userInput = Console.ReadKey(true); //(rrue) -> Eingaben nicht darstellen
 
                 foreach (var menuItem in _items)
                 {

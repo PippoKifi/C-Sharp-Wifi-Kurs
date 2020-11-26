@@ -28,6 +28,15 @@ namespace MenuItemExample
             myMenu.Display(25);
 
             IMenueItem mySelection = myMenu.SelectItem("Ihre Wahl:");
-                    }
+
+
+            var testVariable = 10; //Implizite Typ Deklaration
+
+            var testVariable_TestDecimal = 1999999999999900000.000000000000000000000; //Implizite Typ Deklaration
+
+            //Der Datentyp ergibt sich aus dem Wert mit dem er initialisiert werden Rückgabe-Typ
+            var mySelectionTest = myMenu.SelectItem("Ihre Wahl:"); //Lenkt den Blick auf die Variablen bezeichnung 
+
+        }
     }
 }
