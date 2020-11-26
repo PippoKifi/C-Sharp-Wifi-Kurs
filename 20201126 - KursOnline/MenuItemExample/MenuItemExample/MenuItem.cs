@@ -4,37 +4,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MenuItemExample
+namespace SelectionMenuExample.Items
 {
-   public class MenuItem : IMenueItem
+    public class MenuItem : IMenuItemWithUpdateableSelectable
     {
-        //TODO Kapseln (Lokale Variabeln anlegen)?
-        string _description;
-        char _code;
+        private string _description;
+        private ConsoleKey _code;
+        private bool _selectable;
+        private bool _visible;
 
-        //TODO Konstrucktor anlegen?
-        public MenuItem(string descriprion, ConsoleKey code)
+
+        public MenuItem(string description, ConsoleKey code)
         {
-            _description = descriprion;
-            _code = code.ToString().ToLower()[0]; //Immer nur klene Buchstaben für die Prüfung
+            _description = description;
+            _code = code;
+
+            _visible = true;
+            _selectable = true;
         }
 
-        //Warum Public?
-        public string Descriprion
+        public string Description
         {
-            get { return _description ;  }
+            get { return _description; }
         }
+
         public ConsoleKey Code
         {
-            get { return ConsoleKey.Spacebar;  }
+            get { return _code; }
+        }
+
+        public bool Selectable
+        {
+            get { return _selectable; }
+        }
+
+        public bool Visible
+        {
+            get { return _visible; }
+            set { _visible = value; }
         }
 
         public virtual void Display(int width)
         {
-            //Daten laden ................L
-            //Programm beenden ...........Q
-            Console.Write($"{_description} {new string('.',width - _description.Length)}");
-            Console.Write($"Was für ein Menü wünschen sie? Bitte treffen sie eine auswahl");
+            //Daten laden...............L
+            //Program beenden...........Q
+            if (_visible)
+            {
+                Console.WriteLine($"{_description} {new string('.', width - _description.Length)} {_code}");
+            }
+        }
+
+        public void UpdateSelectable(bool newValue)
+        {
+            _selectable = newValue;
         }
     }
 }

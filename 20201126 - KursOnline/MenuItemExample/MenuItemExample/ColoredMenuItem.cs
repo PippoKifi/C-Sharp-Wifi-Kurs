@@ -4,36 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MenuItemExample
+namespace SelectionMenuExample.Items
 {
     public class ColoredMenuItem : MenuItem
     {
+        private ConsoleColor _itemColor;
 
-        //TODO Lokale Variablen anlegen
-        private ConsoleColor _itemcolor;
-
-        //TODO Konstruktor anlegen
-        public ColoredMenuItem(string descriprion, ConsoleKey code, ConsoleColor itemcolor)
-            : base(descriprion, code)
+        public ColoredMenuItem(string description, ConsoleKey code, ConsoleColor itemColor)
+            : base(description, code)
         {
-            _itemcolor = itemcolor;
+            _itemColor = itemColor;
         }
 
-        public ConsoleColor Itemcolor
+        public ConsoleColor ItemColor
         {
-            get { return _itemcolor;  }
+            get { return _itemColor; }
         }
-
 
         public override void Display(int width)
         {
             ConsoleColor oldColor = Console.ForegroundColor;
-            Console.ForegroundColor = _itemcolor;
+            Console.ForegroundColor = _itemColor;
 
             base.Display(width);
-            
+
             Console.ForegroundColor = oldColor;
         }
-
     }
 }

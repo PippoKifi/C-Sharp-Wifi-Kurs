@@ -4,65 +4,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MenuItemExample
+namespace SelectionMenuExample
 {
     public class Menu : IMenu
     {
-
-        private List<IMenueItem> _items; //Kann dynamisch 
-        //private SortedList<int, IMenueItem> _items2; //Wird immer Sortiert (Schnell)
-        //private Dictionary<int, IMenueItem> _myDictionary; //Jeder Datensatz ist eindeütig
+        private List<IMenuItem> _items;
 
         public Menu()
         {
-            _items = new List<IMenueItem>();
+            _items = new List<IMenuItem>();
         }
+
 
         public int Count
         {
             get { return _items.Count; }
         }
 
-        public void Add(IMenueItem menuItem)
+        public void Add(IMenuItem menuItem)
         {
             _items.Add(menuItem);
         }
 
-        public void Remove(IMenueItem menuItem)
+        public void Remove(IMenuItem menuItem)
         {
             _items.Remove(menuItem);
         }
 
-        public void Display(int wigth)
+        public void Display(int width)
         {
             foreach (var menuItem in _items)
             {
-                menuItem.Display(wigth);
+                menuItem.Display(width);
             }
+
+            Console.WriteLine();
         }
 
-        public IMenueItem SelectItem(string inputPrompt)
+        public IMenuItem SelectItem(string inputPrompt)
         {
-
             while (true)
             {
-                Console.WriteLine(inputPrompt);
-               var userInput = Console.ReadKey(true); //(rrue) -> Eingaben nicht darstellen
+                Console.Write(inputPrompt);
+                var userInput = Console.ReadKey(true);
 
                 foreach (var menuItem in _items)
                 {
-                    if (userInput.KeyChar == menuItem.Code)
+                    if (userInput.Key == menuItem.Code && menuItem.Selectable)
                     {
-                        Console.WriteLine($"Ihre Auswahl war {menuItem}");
                         return menuItem;
                     }
                 }
 
-                Console.WriteLine("Ungültige Eingabe!");
+                //Console.WriteLine("Ungültige Eingabe!");
             }
-
-            
-            
         }
+
+
     }
 }

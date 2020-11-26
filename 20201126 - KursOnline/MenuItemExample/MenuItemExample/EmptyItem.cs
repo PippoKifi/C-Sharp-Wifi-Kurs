@@ -1,33 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MenuItemExample
+namespace SelectionMenuExample.Items
 {
-    public class EmptyItem : IMenueItem
+    public class EmptyItem : IMenuItem
     {
+        private bool _selectable;
+        private bool _visible;
 
         public EmptyItem()
         {
-            //Nothing to do -> Standard Konstruktor 
+            _selectable = false;
+            _visible = true;
         }
 
-        public string Descriprion
+        public string Description
         {
-            get { return string.Empty;  }
+            get { return string.Empty; }
         }
 
-        public char Code
+        public ConsoleKey Code
         {
-            get { return ' '; }
+            get { return ConsoleKey.Spacebar; }
         }
 
+        public bool Selectable
+        {
+            get { return _selectable; }
+            //set 
+            //{
+            //    _selectable = false;
+            //    Debug.WriteLine("Selectable für EmptyItem wird immer auf false gesetzt.");
+            //}
+        }
+        public bool Visible
+        {
+            get { return _visible; }
+            set { _visible = value; }
+        }
 
         public void Display(int width)
         {
-            Console.WriteLine();
+            if (_visible)
+            {
+                Console.WriteLine();
+            }
         }
     }
 }

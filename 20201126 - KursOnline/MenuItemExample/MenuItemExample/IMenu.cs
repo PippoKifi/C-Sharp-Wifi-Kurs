@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MenuItemExample
+namespace SelectionMenuExample
 {
     public interface IMenu
     {
         int Count { get;  }
 
-        void Add(IMenueItem menuItem);
-        void Remove(IMenueItem imenuItem);
+        void Add(IMenuItem menuItem);
+        void Remove(IMenuItem imenuItem);
         void Display(int wigth);
-        IMenueItem SelectItem(string selection);
+        IMenuItem SelectItem(string selection);
         
     }
 }
