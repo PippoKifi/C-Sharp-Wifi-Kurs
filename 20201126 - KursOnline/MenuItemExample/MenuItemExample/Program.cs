@@ -12,9 +12,7 @@ namespace SelectionMenuExample
         static void Main(string[] args)
         {
 
-            //string myData = "Meine Daten";
-            ApplicationParameters applicationParameters = new ApplicationParameters();
-            IMenu<ApplicationParameters> myMenu = new Menu<ApplicationParameters>();
+            //myMenu.LoadFromFile("menufile.txt");
 
             //TODO: myMenu.LoadFromFile("menufile.txt");
 
