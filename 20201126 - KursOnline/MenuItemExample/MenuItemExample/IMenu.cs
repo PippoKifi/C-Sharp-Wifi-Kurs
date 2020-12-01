@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace SelectionMenuExample
 {
-    public interface IMenu
+    public interface IMenu<T>
     {
         int Count { get;  }
 
-        void Add(IMenuItem menuItem);
-        void Remove(IMenuItem imenuItem);
+        void Add(IMenuItem<T> menuItem);
+        void Remove(IMenuItem<T> imenuItem);
         void Display(int wigth);
-        IMenuItem SelectItem(string selection);
+        IMenuItem<T> SelectItem(string selection);
         
     }
 }
