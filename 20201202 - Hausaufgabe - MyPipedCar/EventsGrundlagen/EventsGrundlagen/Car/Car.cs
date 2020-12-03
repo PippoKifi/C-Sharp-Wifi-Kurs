@@ -11,10 +11,14 @@ namespace MyPimpedCar
     public class Car
     {
         private string _description;
+        private int _maxSpeed;
         private int _currentSpeed;
         private CarState _state;
         private Engine _myEngine;
         private Radio _myRadio;
+
+
+        private Engine MyEngine;
 
         public event CarExplodesHandler CarExploded;
         //Event (Observer-Patterm) kann von mehrere "abbonenten" verwendet werden

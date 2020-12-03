@@ -14,13 +14,16 @@ namespace MyPimpedCar
             ApplicationParameters applicationParameters = new ApplicationParameters();
             IMenu<ApplicationParameters> myMenu = new Menu<ApplicationParameters>();
 
+            //creat selection menu
             myMenu = CreateMenu();
-      
+
             while (true) //User abfragen
             {
                 Console.Clear();
                 myMenu.Display(35); //Breite angeben
                 var mySelection = myMenu.SelectItem("Ihre Wahl: ");
+
+                //Console.WriteLine($"\nIhre Auswahl: {mySelection.Description}");
 
                 //start execution
                 //mySelection.Execute(applicationParameters);
@@ -30,12 +33,13 @@ namespace MyPimpedCar
 
                 var myCar = new Car("Fiat Ducato", DobloMotor2);
                 myCar.CarExploded += MyCar_CarExploded; //Event Abonieren
-                do
-                {
-                    Console.WriteLine(myCar);
-                    myCar.SpeedUp(5);
+            do
+            {
+                Console.WriteLine(myCar);
+                myCar.SpeedUp(5);
+                                
 
-                } while (myCar.State != CarState.Exploded);
+            } while (myCar.State != CarState.Exploded);
 
             }
         }

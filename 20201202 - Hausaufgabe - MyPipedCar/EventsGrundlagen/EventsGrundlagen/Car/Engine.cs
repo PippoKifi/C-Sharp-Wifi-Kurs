@@ -22,7 +22,7 @@ namespace MyPimpedCar
             get { return _engineTyp; }
             set { _engineTyp = value; }
         }
-             
+
         public EngineState EngineStatus
         {
             get { return _engineStatus; }
@@ -41,6 +41,7 @@ namespace MyPimpedCar
             set { _description = value; }
         }
 
+        private EngineState _engineStatus;
 
     }
 }
