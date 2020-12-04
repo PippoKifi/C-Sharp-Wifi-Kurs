@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Wifi.PlaylistEditor
 {
-    public partial class Form_mail : Form
+    public partial class Form_Question_DummyForCloning : Form
     {
-        public Form_mail()
+        public Form_Question_DummyForCloning()
         {
             InitializeComponent();
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

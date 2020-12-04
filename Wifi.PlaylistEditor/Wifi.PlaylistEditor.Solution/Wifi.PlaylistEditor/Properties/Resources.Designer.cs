@@ -73,6 +73,16 @@ namespace Wifi.PlaylistEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap File_Delete {
+            get {
+                object obj = ResourceManager.GetObject("File_Delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GarbageCollector {
             get {
                 object obj = ResourceManager.GetObject("GarbageCollector", resourceCulture);
@@ -93,6 +103,16 @@ namespace Wifi.PlaylistEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Load_PLaylist {
+            get {
+                object obj = ResourceManager.GetObject("Load_PLaylist", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Partition_Freespace {
             get {
                 object obj = ResourceManager.GetObject("Partition_Freespace", resourceCulture);
@@ -103,9 +123,49 @@ namespace Wifi.PlaylistEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Plalyst_Add {
+            get {
+                object obj = ResourceManager.GetObject("Plalyst_Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Playlist_Add {
+            get {
+                object obj = ResourceManager.GetObject("Playlist_Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Playlist_Load {
+            get {
+                object obj = ResourceManager.GetObject("Playlist_Load", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap RestartPfeil {
             get {
                 object obj = ResourceManager.GetObject("RestartPfeil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save {
+            get {
+                object obj = ResourceManager.GetObject("Save", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
