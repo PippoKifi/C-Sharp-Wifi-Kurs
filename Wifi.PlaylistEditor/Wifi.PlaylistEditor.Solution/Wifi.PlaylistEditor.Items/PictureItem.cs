@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mime;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using Wifi.PlaylistEditor.Types;
 
 namespace Wifi.PlaylistEditor.Items
@@ -14,9 +10,13 @@ namespace Wifi.PlaylistEditor.Items
 
         public string Artist => throw new NotImplementedException();
 
-        public int Duration => throw new NotImplementedException();
+        public TimeSpan Duration => throw new NotImplementedException();
 
         public string Path => throw new NotImplementedException();
+
+        public Guid PlayList_Guid => throw new NotImplementedException();
+
+        public Guid Item_Guid => throw new NotImplementedException();
 
         //public MediaTypeNames.Image Thumbnail => throw new NotImplementedException();
     }

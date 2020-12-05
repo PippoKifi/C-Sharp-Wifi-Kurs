@@ -7,7 +7,7 @@ namespace Wifi.PlaylistEditor.Types
     {
         private string _name;
         private string _autor;
-        private Guid _playListGuid;
+        private Guid _playlistGuid;
         private List<IPlaylistItems> _itemList; //Playlist "HAT EIN" IPlaylistItems
 
 
@@ -18,7 +18,7 @@ namespace Wifi.PlaylistEditor.Types
             _name = name;
             _autor = autor;
             _itemList = new List<IPlaylistItems>();
-            _playListGuid = Guid.NewGuid();
+            _playlistGuid = Guid.NewGuid();
         }
 
 
@@ -44,8 +44,8 @@ namespace Wifi.PlaylistEditor.Types
 
         public Guid PlayListGuid
         {
-            get { return _playListGuid; }
-            set { _playListGuid = value; }
+            get { return _playlistGuid; }
+            set { _playlistGuid = value; }
         }
 
         //################
@@ -65,27 +65,14 @@ namespace Wifi.PlaylistEditor.Types
 
         }
 
-
         public void Load()
         {
 
         }
 
-
         public void Save()
         {
 
-        }
-
-        public bool IsThereAlreadyAPlaylist()
-        {
-            //do
-            //{
-            //    return true;
-            //} while (Objekt.Playlist);
-
-
-            return false;
         }
 
     }

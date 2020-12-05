@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using static System.Net.Mime.MediaTypeNames;
+using System.IO;
 
 namespace Wifi.PlaylistEditor.Types
 {
@@ -9,8 +7,10 @@ namespace Wifi.PlaylistEditor.Types
     {
         string Titel { get; }
         String Artist { get; }
-        int Duration { get; }
-        string Path { get; }
+        TimeSpan Duration { get; }
+        String Path { get; }
         //Image Thumbnail { get; }
+        Guid Item_Guid { get; }
+        Guid PlayList_Guid { get; }
     }
 }

@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileType.cs" />
     <Compile Include="AskTheEndUserSomething.cs" />
     <Compile Include="Form_Main.cs">
       <SubType>Form</SubType>
@@ -74,6 +75,7 @@
     <Compile Include="Form_Question_DummyForCloning.Designer.cs">
       <DependentUpon>Form_Question_DummyForCloning.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListViewItem_PlaylistItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_Main.resx">
@@ -146,6 +148,10 @@
     <None Include="Resources\Load_PLaylist.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Wifi.PlaylistEditor.Items\Wifi.PlaylistEditor.Items.csproj">
+      <Project>{97fbfa7e-ab2e-4d91-9e7a-dcfc3660a2fd}</Project>
+      <Name>Wifi.PlaylistEditor.Items</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wifi.PlaylistEditor.Types\Wifi.PlaylistEditor.Types.csproj">
       <Project>{4ef5166a-d1e3-464f-8dea-6973d021e66e}</Project>
       <Name>Wifi.PlaylistEditor.Types</Name>

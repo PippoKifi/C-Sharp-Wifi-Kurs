@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor", "Wifi.PlaylistEditor\Wifi.PlaylistEditor.csproj", "{57B68FCB-5A3E-4BAA-B7B0-469BFC75CF68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Types", "Wifi.PlaylistEditor.Types\Wifi.PlaylistEditor.Types.csproj", "{4EF5166A-D1E3-464F-8DEA-6973D021E66E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wifi.PlaylistEditor.Types", "Wifi.PlaylistEditor.Types\Wifi.PlaylistEditor.Types.csproj", "{4EF5166A-D1E3-464F-8DEA-6973D021E66E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Items", "Wifi.PlaylistEditor.Items\Wifi.PlaylistEditor.Items.csproj", "{97FBFA7E-AB2E-4D91-9E7A-DCFC3660A2FD}"
 EndProject

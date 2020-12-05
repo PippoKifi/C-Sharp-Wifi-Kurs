@@ -1,15 +1,7 @@
-﻿using iTextSharp.text;
-using Microsoft.WindowsAPICodePack.Shell;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wifi.PlaylistEditor.Items;
 using Wifi.PlaylistEditor.Types;
 
 namespace Wifi.PlaylistEditor
@@ -17,8 +9,9 @@ namespace Wifi.PlaylistEditor
     public partial class Form_Main : Form
     {
 
-       public PlaylistArchiv MeinPlaylistArchiv = new PlaylistArchiv(); //Instanz der Klasse PlaylistArchiv anlagen (Eine braucht es immer!)
+        public PlaylistArchiv MeinPlaylistArchiv = new PlaylistArchiv(); //Instanz der Klasse PlaylistArchiv anlagen (Eine braucht es immer!)
         public AskTheEndUserSomething myQuestionForEndUser;
+        private PlayList PlaylistIAmCurrentlyUsing;
 
         public Form_Main()
         {
@@ -43,11 +36,10 @@ namespace Wifi.PlaylistEditor
 
 
 
-
         }
 
 
-        private void toolStripButton_NeuePlalistAnlegen_Click_1(object sender, EventArgs e)
+        private void toolStripButton_NeuePlaylistAnlegen_Click_1(object sender, EventArgs e)
         {
             //PlayList-NAME erfragen
             myQuestionForEndUser = new AskTheEndUserSomething("Wie soll deine neuen PlayList benannt werden?", true);
@@ -59,8 +51,14 @@ namespace Wifi.PlaylistEditor
             this.Text = toolStripLabel_PlaylistAutor.Text + "'s PlaylistEditor";
 
             //Neue PlayList erstellen
-            var myNewPlaylist = new PlayList(lbl_playlistTitel.Text, toolStripLabel_PlaylistAutor.Text); //Playlist Instanze erstellen
-            MeinPlaylistArchiv.Add(myNewPlaylist); //Playlist-Instanze dem Archiv hinzufügen
+            PlaylistIAmCurrentlyUsing = new PlayList(lbl_playlistTitel.Text, toolStripLabel_PlaylistAutor.Text); //Playlist Instanze erstellen
+            MeinPlaylistArchiv.Add(PlaylistIAmCurrentlyUsing); //Playlist-Instanze dem Archiv hinzufügen
+            AddPlaylist_ToOverwieListView(ListView_PlaylistOverwie, PlaylistIAmCurrentlyUsing); //Add Playlist to ListView
+
+            ListViewItem_PlaylistItem item = new ListViewItem_PlaylistItem();
+            item.Text = lbl_playlistTitel.Text;
+            item.SubItems.Add(toolStripLabel_PlaylistAutor.Text);
+            ListView_PlaylistOverwie.Items.Add(item);
         }
 
 
@@ -77,88 +75,130 @@ namespace Wifi.PlaylistEditor
 
             else //Playlist wurde schon ausgewäht
             {
-           
 
-            //get the file names
-            string[] songs = (string[])e.Data.GetData(DataFormats.FileDrop, false);
 
-            foreach (var song in songs)
-                //make sure the file exists
-                if (File.Exists(song))
-                {
-                    //if it's an mp3 file then call AddFileToListview
-                    if (string.Compare(Path.GetExtension(song), ".mp3", true) == 0)
+                string[] songs = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+
+                foreach (var song in songs)
+                    //make sure the file exists
+                    if (File.Exists(song))
                     {
-                        //AddFileToListview(song); //TODO
+                        FileInfo file = new FileInfo(song);
+                        FileType aktFileFormat = CheckFilesForAllowedFormat(file);
+                        if (FileType.notPermitted != aktFileFormat)
+                        {
+                            Add(aktFileFormat, file);
+                        }
+                        else
+                        {
+                            //File-Format ist nicht erlaubt -> File verwerfen
+                        }
                     }
-                }
-                //A HA! It's a directory not a single file
-                else if (Directory.Exists(song))
-                {
-                    //get the directory information
-                    DirectoryInfo di = new DirectoryInfo(song);
-
-                    //get all the mp3 files (will add WMA in the future)
-                    FileInfo[] files = di.GetFiles("*.mp3");
-
-                    //here we use a parallel loop to loop through every mp3 in the
-                    //directory provided
-                    foreach (var file in files)
+                    //A HA! It's a directory not a single file
+                    else if (Directory.Exists(song))
                     {
-                        //AddFileToListview(file.FullName); //TODO
+                        //get the directory information
+                        DirectoryInfo di = new DirectoryInfo(song);
 
+                        //get all the mp3 files (will add WMA in the future)
+                        FileInfo[] files = di.GetFiles("*.*", SearchOption.AllDirectories);
+
+                        //here we use a parallel loop to loop through every mp3 in the
+                        //directory provided
+                        foreach (var file in files)
+                        {
+                            FileType aktFileFormat = CheckFilesForAllowedFormat(file);
+                            if (FileType.notPermitted != aktFileFormat)
+                            {
+                                Add(aktFileFormat, file);
+                            }
+                            else
+                            {
+                                //File-Format ist nicht erlaubt -> File verwerfen
+                            }
+                        }
                     }
-
-                }
-            
-
-            //we're using a Parallel.ForEach loop because if a directory is selected it can contain n number of items, this is to help prevent a bottleneck.
-            //Parallel.ForEach(songs, song =>
-            //{
-            //    //make sure the file exists
-            //    if (File.Exists(song))
-            //    {
-            //        //if it's an mp3 file then call AddFileToListview
-            //        if (string.Compare(Path.GetExtension(song), ".mp3", true) == 0)
-            //        {
-            //            AddFileToListview(song);
-            //        }
-            //    }
-            //    //A HA! It's a directory not a single file
-            //    else if (Directory.Exists(song))
-            //    {
-            //        //get the directory information
-            //        DirectoryInfo di = new DirectoryInfo(song);
-
-            //        //get all the mp3 files (will add WMA in the future)
-            //        FileInfo[] files = di.GetFiles("*.mp3");
-
-            //        //here we use a parallel loop to loop through every mp3 in the
-            //        //directory provided
-            //        Parallel.ForEach(files, file =>
-            //        {
-            //            AddFileToListview(file.FullName);
-            //        });
-            //    }
-            //});
+            }
         }
-    }
 
-    private void Form_Main_DragEnter(object sender, DragEventArgs e)
+        /// <summary>
+        /// Checks if the file has the allowed format
+        /// </summary>
+        /// <param name="fileToChek"></param>
+        /// <returns></returns>
+        private FileType CheckFilesForAllowedFormat(FileInfo fileToChek)
+        {
+            string fileExtension = fileToChek.Extension;
+            foreach (FileType item in (FileType[])Enum.GetValues(typeof(FileType)))
+            {
+                if ("." + item == fileExtension)
+                {
+                    return item;
+                }
+            }
+
+            return FileType.notPermitted;
+        }
+
+        /// <summary>
+        /// Adds the new element to the Plalyste
+        /// </summary>
+        /// <param name="newItem"></param>
+        private void Add(FileType type_OfNewElement, FileInfo fullFile)
+        {
+            IPlaylistItems fileItem;
+
+            switch (type_OfNewElement)
+            {
+                case FileType.mp3:
+                    mp3Item myNewmp3Item = new mp3Item(fullFile, PlaylistIAmCurrentlyUsing.PlayListGuid);
+                    Add(myNewmp3Item);
+                    break;
+
+                case FileType.jpg:
+                    
+                    break;
+
+                case FileType.notPermitted:
+                    
+                    break;
+
+                default:
+                    break;
+
+            }
+        }
+
+        private void Add(IPlaylistItems playlistItem)
+        {
+            ListViewItem_PlaylistItem ListView_Item = new ListViewItem_PlaylistItem();
+            ListView_Item.Text = playlistItem.Titel;
+            ListView_Item.ToolTipText = playlistItem.Titel + " | " + playlistItem.Path;
+            ListView_Item.PlaylistGuid = playlistItem.PlayList_Guid;
+            ListView_Item.PlaylistItemGuid = playlistItem.Item_Guid;
+            //ListView_Item.SubItems.Add(playlistItem.Duration.ToString);
+
+            ListView_PlayListElements.Items.Add(ListView_Item);
+        }
+
+        private void AddPlaylist_ToOverwieListView(ListView listView_PlaylistOverwie, PlayList playlistItem)
+        {
+            ListViewItem_PlaylistItem ListView_Item = new ListViewItem_PlaylistItem();
+            ListView_Item.Text = playlistItem.Name;
+            ListView_Item.PlaylistGuid = playlistItem.PlayListGuid;
+            ListView_PlaylistOverwie.Items.Add(ListView_Item);
+        }
+
+
+        private void Form_Main_DragEnter(object sender, DragEventArgs e)
         {
 
         }
-
-
 
         private void listView_PlayListElements_DragDrop(object sender, DragEventArgs e)
         {
-   
+
         }
-
-
-
-
 
         private void listView_PlayListElements_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -169,5 +209,15 @@ namespace Wifi.PlaylistEditor
         {
 
         }
+
+        private void ListView_PlaylistOverwie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Inhalt lösch
+            //ListView_PlayListElements.Clear(); //Inhalt von ListView löschen
+            //MeinPlaylistArchiv.Load(MeinPlaylistArchiv);
+
+        }
+
+      
     }
 }

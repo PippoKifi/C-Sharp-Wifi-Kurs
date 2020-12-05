@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Wifi.PlaylistEditor.Types
 {
     public class PlaylistArchiv
     {
-        private List<PlayList> myPlaylistArchiv ;
+        private List<PlayList> _playlistArchiv ;
         private int _countPlayLists;
         
-
         //################
         //### KONSTRUKTOR ### 
         public PlaylistArchiv()
         {
-            myPlaylistArchiv = new List<PlayList>();
+            _playlistArchiv = new List<PlayList>();
         }
 
 
@@ -25,26 +23,24 @@ namespace Wifi.PlaylistEditor.Types
         }
 
 
-
-
         //################
         //### METHODEN ###
         public void Load()
         {
-
+            //TODO: Alle Playlist zur verfügung stellen - NOTWENDIG?
         }
         
         public void Add(PlayList newPlayList)
         {
-            myPlaylistArchiv.Add(newPlayList); //PlayListe dem Archiv hinzufügen
+            _playlistArchiv.Add(newPlayList); //PlayListe dem Archiv hinzufügen
             CountPlaylists(); //Item-Counter refresh
         }
 
         private int CountPlaylists()
         {
-            foreach (var playLists in myPlaylistArchiv)
+            foreach (var playLists in _playlistArchiv)
             {
-                _countPlayLists = +1;
+                _countPlayLists += 1;
             }
 
             return _countPlayLists;

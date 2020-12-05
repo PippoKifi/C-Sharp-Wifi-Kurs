@@ -66,20 +66,19 @@ namespace Wifi.PlaylistEditor
 
             //Add _label_Question
             _label_Question.AutoSize = true;
-            _label_Question.Location = new System.Drawing.Point(9, 14);
-            _label_Question.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            _label_Question.Location = new System.Drawing.Point(6, 4);
             _label_Question.Name = "label_Question";
-            _label_Question.Size = new System.Drawing.Size(241, 25);
+            _label_Question.Size = new System.Drawing.Size(160, 17);
             _label_Question.TabIndex = 0;
             _label_Question.Text = _questionToEndUser;
 
             //Add _textBox_Answer
             if (_whitFeedback) 
             { 
-            _textBox_Answer.Location = new System.Drawing.Point(9, 45);
-            _textBox_Answer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            _textBox_Answer.Location = new System.Drawing.Point(6, 25);
+            _textBox_Answer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             _textBox_Answer.Name = "textBox_Answer";
-            _textBox_Answer.Size = new System.Drawing.Size(514, 31);
+            _textBox_Answer.Size = new System.Drawing.Size(349, 23);
             _textBox_Answer.TabIndex = 1;
 
 
@@ -109,7 +108,7 @@ namespace Wifi.PlaylistEditor
             _myCommForm.Text = "Form_Question_DummyForCloning";
             _myCommForm.ResumeLayout(false);
             _myCommForm.PerformLayout();
-
+            _myCommForm.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             //Form anzeigen
             _myCommForm.ShowDialog(); //Form anzeigen
         }
