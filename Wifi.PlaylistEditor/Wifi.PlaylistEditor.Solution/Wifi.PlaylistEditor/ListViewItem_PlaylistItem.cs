@@ -3,6 +3,10 @@ using System.Windows.Forms;
 
 namespace Wifi.PlaylistEditor
 {
+    /// <summary>
+    /// ListViewItem_PlaylistItem : ListViewItem
+    /// Spz: PlaylistItem + GuidPlaylistGuid
+    /// </summary>
     public class ListViewItem_PlaylistItem : ListViewItem
     {
         private Guid _playlistItemGuid;

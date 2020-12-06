@@ -12,6 +12,7 @@ namespace Wifi.PlaylistEditor
         public PlaylistArchiv MeinPlaylistArchiv = new PlaylistArchiv(); //Instanz der Klasse PlaylistArchiv anlagen (Eine braucht es immer!)
         public AskTheEndUserSomething myQuestionForEndUser;
         private PlayList PlaylistIAmCurrentlyUsing;
+        public String RememberAutor = "";
 
         public Form_Main()
         {
@@ -20,13 +21,21 @@ namespace Wifi.PlaylistEditor
 
         private void Form_Main_Load(object sender, EventArgs e)
         {
+
+
+            lbl_playlistTitel.Text = "";
+            toolStripLabel_PlaylistAutor.Text = "";
+            toolStripLabel_Artist.Text = "...";
+            toolStripLabel_Titel.Text = "..."; 
+            toolStripLabel_Duration.Text = "00:00:00";
+
             // Enable drag and drop for this form
             // (this can also be applied to any controls)
             this.AllowDrop = true;
 
             // Add event handlers for the drag & drop functionality
             //this.DragEnter += new DragEventHandler(Form_Main_DragEnter);
-            this.DragDrop += new DragEventHandler(listView_PlayListElements_DragDrop);
+            this.DragDrop += new DragEventHandler(Form_Main_DragOver);
 
 
             //TODO
@@ -53,12 +62,20 @@ namespace Wifi.PlaylistEditor
             //Neue PlayList erstellen
             PlaylistIAmCurrentlyUsing = new PlayList(lbl_playlistTitel.Text, toolStripLabel_PlaylistAutor.Text); //Playlist Instanze erstellen
             MeinPlaylistArchiv.Add(PlaylistIAmCurrentlyUsing); //Playlist-Instanze dem Archiv hinzufügen
-            AddPlaylist_ToOverwieListView(ListView_PlaylistOverwie, PlaylistIAmCurrentlyUsing); //Add Playlist to ListView
+            AddPlaylist_ToOverwieListView(PlaylistIAmCurrentlyUsing); //Add Playlist to ListView
 
-            ListViewItem_PlaylistItem item = new ListViewItem_PlaylistItem();
-            item.Text = lbl_playlistTitel.Text;
-            item.SubItems.Add(toolStripLabel_PlaylistAutor.Text);
-            ListView_PlaylistOverwie.Items.Add(item);
+            //ListViewItem_PlaylistItem item = new ListViewItem_PlaylistItem();
+            //item.Text = lbl_playlistTitel.Text;
+            //item.SubItems.Add(toolStripLabel_PlaylistAutor.Text);
+            //ListView_PlaylistOverwie.Items.Add(item);
+        }
+
+        private void AddPlaylist_ToOverwieListView(PlayList playlistItem)
+        {
+            ListViewItem_PlaylistItem ListView_Item = new ListViewItem_PlaylistItem();
+            ListView_Item.Text = playlistItem.Name;
+            ListView_Item.PlaylistGuid = playlistItem.PlayListGuid;
+            ListView_PlaylistOverwie.Items.Add(ListView_Item);
         }
 
 
@@ -146,13 +163,11 @@ namespace Wifi.PlaylistEditor
         /// <param name="newItem"></param>
         private void Add(FileType type_OfNewElement, FileInfo fullFile)
         {
-            IPlaylistItems fileItem;
-
             switch (type_OfNewElement)
             {
                 case FileType.mp3:
                     mp3Item myNewmp3Item = new mp3Item(fullFile, PlaylistIAmCurrentlyUsing.PlayListGuid);
-                    Add(myNewmp3Item);
+                    AddItem_ToListView(myNewmp3Item);
                     break;
 
                 case FileType.jpg:
@@ -165,11 +180,10 @@ namespace Wifi.PlaylistEditor
 
                 default:
                     break;
-
             }
         }
 
-        private void Add(IPlaylistItems playlistItem)
+        private void AddItem_ToListView(IPlaylistItems playlistItem)
         {
             ListViewItem_PlaylistItem ListView_Item = new ListViewItem_PlaylistItem();
             ListView_Item.Text = playlistItem.Titel;
@@ -181,43 +195,42 @@ namespace Wifi.PlaylistEditor
             ListView_PlayListElements.Items.Add(ListView_Item);
         }
 
-        private void AddPlaylist_ToOverwieListView(ListView listView_PlaylistOverwie, PlayList playlistItem)
+  
+       
+        private void listView_PlayListElements_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListViewItem_PlaylistItem ListView_Item = new ListViewItem_PlaylistItem();
-            ListView_Item.Text = playlistItem.Name;
-            ListView_Item.PlaylistGuid = playlistItem.PlayListGuid;
-            ListView_PlaylistOverwie.Items.Add(ListView_Item);
+            ListView.SelectedListViewItemCollection selectedItem = ListView_PlaylistOverwie.SelectedItems;
+            foreach (ListViewItem_PlaylistItem item in selectedItem)
+            {
+                //MeinPlaylistArchiv.Load(item.PlaylistGuid); //TODO - Richtiges Load eintragen
+            }
         }
 
+ 
+        private void ListView_PlaylistOverwie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListView_PlaylistOverwie.Clear;
+
+            ListView.SelectedListViewItemCollection selectedItem = ListView_PlaylistOverwie.SelectedItems;
+            foreach (ListViewItem_PlaylistItem item in selectedItem)
+            {
+                PlayList selectedPlayList = MeinPlaylistArchiv.Load(item.PlaylistGuid);
+
+                foreach (var IPlaylistItems in selectedPlayList.ItemList)
+                {
+                    AddItem_ToListView(IPlaylistItems);
+                }
+            }
+        }
+
+        private void Form_Main_DragDrop(object sender, DragEventArgs e)
+        {
+
+        }
 
         private void Form_Main_DragEnter(object sender, DragEventArgs e)
         {
 
         }
-
-        private void listView_PlayListElements_DragDrop(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void listView_PlayListElements_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView_PlayListElements_ControlAdded(object sender, ControlEventArgs e)
-        {
-
-        }
-
-        private void ListView_PlaylistOverwie_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Inhalt lösch
-            //ListView_PlayListElements.Clear(); //Inhalt von ListView löschen
-            //MeinPlaylistArchiv.Load(MeinPlaylistArchiv);
-
-        }
-
-      
     }
 }

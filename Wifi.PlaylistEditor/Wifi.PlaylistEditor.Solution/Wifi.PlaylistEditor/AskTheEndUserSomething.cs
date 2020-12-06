@@ -16,6 +16,7 @@ namespace Wifi.PlaylistEditor
         private TextBox _textBox_Answer = new TextBox();
         private TextBox _button_FinishToAnwer = new TextBox();
         private bool _whitFeedback;
+        private string _deliverAnwer;
 
         //################
         //### KONSTRUKTOR ###
@@ -25,7 +26,6 @@ namespace Wifi.PlaylistEditor
             _questionToEndUser = questionToEndUser;
             MyCommForm = new Form();
         }
-
 
         //#####################
         //### EIGENSCHAFTEN ###
@@ -80,8 +80,7 @@ namespace Wifi.PlaylistEditor
             _textBox_Answer.Name = "textBox_Answer";
             _textBox_Answer.Size = new System.Drawing.Size(349, 23);
             _textBox_Answer.TabIndex = 1;
-
-
+ 
             //Add Button_FinishToAnwer
             _button_FinishToAnwer.Location = new System.Drawing.Point(6, 49);
             _button_FinishToAnwer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);

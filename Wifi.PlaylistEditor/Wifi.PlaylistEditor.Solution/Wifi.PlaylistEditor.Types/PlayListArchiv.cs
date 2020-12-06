@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Wifi.PlaylistEditor.Types
 {
@@ -25,15 +26,24 @@ namespace Wifi.PlaylistEditor.Types
 
         //################
         //### METHODEN ###
-        public void Load()
+        public PlayList Load(Guid loadThisPlaylist)
         {
-            //TODO: Alle Playlist zur verfügung stellen - NOTWENDIG?
+            PlayList playList_ToLoad = new PlayList("Dummy", "Dummy");
+            foreach (var playLists in _playlistArchiv)
+            {
+                if(loadThisPlaylist == playLists.PlayListGuid)
+                {
+                    return playList_ToLoad = playLists;
+                }
+            }
+            return playList_ToLoad;
         }
         
         public void Add(PlayList newPlayList)
         {
             _playlistArchiv.Add(newPlayList); //PlayListe dem Archiv hinzufügen
             CountPlaylists(); //Item-Counter refresh
+            CalcTotPlayListDuration(newPlayList.PlayListGuid);
         }
 
         private int CountPlaylists()
@@ -42,8 +52,25 @@ namespace Wifi.PlaylistEditor.Types
             {
                 _countPlayLists += 1;
             }
-
             return _countPlayLists;
+        }
+
+        public TimeSpan CalcTotPlayListDuration(Guid PlaylistGuid)
+        {
+            TimeSpan totPlaylistDuration = TimeSpan.Zero;
+
+            foreach (var playlistArchiv in _playlistArchiv)
+                  {
+                foreach (var playlistItem in playlistArchiv.ItemList)
+                {
+                    if (playlistItem.Item_Guid == PlaylistGuid)
+                    {
+                        totPlaylistDuration =+ playlistItem.Duration;
+                    }
+                }
+            }
+            return totPlaylistDuration;
+
         }
 
 
