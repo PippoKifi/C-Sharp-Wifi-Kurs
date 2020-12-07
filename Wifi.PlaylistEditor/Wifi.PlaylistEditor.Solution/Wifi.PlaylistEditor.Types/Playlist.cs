@@ -9,7 +9,7 @@ namespace Wifi.PlaylistEditor.Types
         private string _autor;
         private Guid _playlistGuid;
         private List<IPlaylistItems> _itemList; //Playlist "HAT EIN" IPlaylistItems
-
+        private TimeSpan _playList_Duration;
 
         //################
         //### KONSTRUKTOR ###
@@ -19,6 +19,7 @@ namespace Wifi.PlaylistEditor.Types
             _autor = autor;
             _itemList = new List<IPlaylistItems>();
             _playlistGuid = Guid.NewGuid();
+            _playList_Duration = TimeSpan.Zero;
         }
 
 
@@ -35,7 +36,7 @@ namespace Wifi.PlaylistEditor.Types
             get { return _autor; }
             set { _autor = value; }
         }
-        
+
         public List<IPlaylistItems> ItemList
         {
             get { return _itemList; }
@@ -48,11 +49,24 @@ namespace Wifi.PlaylistEditor.Types
             set { _playlistGuid = value; }
         }
 
+        public TimeSpan PlayList_Duration
+        {
+            get { return _playList_Duration; }
+            set { _playList_Duration = value; }
+        }
+
+
         //################
         //### METHODEN ###
+
+        /// <summary>
+        /// Fügt eine durch das Interface 'IPlaylistItems' typisierte-Instance der Playlist hinzu
+        /// </summary>
+        /// <param name="ItemToAdd"></param>
         public void Add(IPlaylistItems ItemToAdd)
         {
             _itemList.Add(ItemToAdd);
+            PLayListDuration(ItemToAdd.PlayList_Guid);
         }
 
         public void Remove()
@@ -65,15 +79,38 @@ namespace Wifi.PlaylistEditor.Types
 
         }
 
-        public void Load()
+        public void Load(IPlaylistItems ItemToAdd)
         {
-
+            PLayListDuration(ItemToAdd.PlayList_Guid);
         }
 
         public void Save()
         {
 
         }
+
+        /// <summary>
+        /// Berechnet die gesamte Spielzeit von der angegebenen Playlist
+        /// </summary>
+        /// <param name="Playlist_Guid"></param>
+        /// <returns>Spielzeit in TimeSpan-Format</returns>
+        public TimeSpan PLayListDuration(Guid Playlist_Guid)
+        {
+            foreach (var playlistItem in _itemList)
+            {
+                if (playlistItem.PlayList_Guid == Playlist_Guid)
+                {
+                    _playList_Duration += playlistItem.Duration;
+                }
+            }
+
+            return _playList_Duration;
+
+
+
+        }
+
+
 
     }
 }

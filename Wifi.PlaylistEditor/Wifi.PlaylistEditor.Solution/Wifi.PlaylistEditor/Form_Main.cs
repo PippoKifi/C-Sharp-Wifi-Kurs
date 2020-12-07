@@ -11,7 +11,7 @@ namespace Wifi.PlaylistEditor
 
         public PlaylistArchiv MeinPlaylistArchiv = new PlaylistArchiv(); //Instanz der Klasse PlaylistArchiv anlagen (Eine braucht es immer!)
         public AskTheEndUserSomething myQuestionForEndUser;
-        private PlayList PlaylistIAmCurrentlyUsing;
+        private PlayList Playlist_IAmCurrentlyUsing;
         public String RememberAutor = "";
 
         public Form_Main()
@@ -26,7 +26,7 @@ namespace Wifi.PlaylistEditor
             lbl_playlistTitel.Text = "";
             toolStripLabel_PlaylistAutor.Text = "";
             toolStripLabel_Artist.Text = "...";
-            toolStripLabel_Titel.Text = "..."; 
+            toolStripLabel_Titel.Text = "...";
             toolStripLabel_Duration.Text = "00:00:00";
 
             // Enable drag and drop for this form
@@ -60,9 +60,9 @@ namespace Wifi.PlaylistEditor
             this.Text = toolStripLabel_PlaylistAutor.Text + "'s PlaylistEditor";
 
             //Neue PlayList erstellen
-            PlaylistIAmCurrentlyUsing = new PlayList(lbl_playlistTitel.Text, toolStripLabel_PlaylistAutor.Text); //Playlist Instanze erstellen
-            MeinPlaylistArchiv.Add(PlaylistIAmCurrentlyUsing); //Playlist-Instanze dem Archiv hinzufügen
-            AddPlaylist_ToOverwieListView(PlaylistIAmCurrentlyUsing); //Add Playlist to ListView
+            Playlist_IAmCurrentlyUsing = new PlayList(lbl_playlistTitel.Text, toolStripLabel_PlaylistAutor.Text); //Playlist Instanze erstellen
+            MeinPlaylistArchiv.Add(Playlist_IAmCurrentlyUsing); //Playlist-Instanze dem Archiv hinzufügen
+            AddPlaylist_ToOverwieListView(Playlist_IAmCurrentlyUsing); //Add Playlist to ListView
 
             //ListViewItem_PlaylistItem item = new ListViewItem_PlaylistItem();
             //item.Text = lbl_playlistTitel.Text;
@@ -166,16 +166,18 @@ namespace Wifi.PlaylistEditor
             switch (type_OfNewElement)
             {
                 case FileType.mp3:
-                    mp3Item myNewmp3Item = new mp3Item(fullFile, PlaylistIAmCurrentlyUsing.PlayListGuid);
-                    AddItem_ToListView(myNewmp3Item);
+                    mp3Item myNewmp3Item = new mp3Item(fullFile, Playlist_IAmCurrentlyUsing.PlayListGuid);
+                    Playlist_IAmCurrentlyUsing.Add(myNewmp3Item); //Item der Playlist hinzufügen
+                    AddItem_ToListView(myNewmp3Item); //Item in ListView erstellen
+                    lbl_playlistSpielzeit.Text = Playlist_IAmCurrentlyUsing.PlayList_Duration.ToString();
                     break;
 
                 case FileType.jpg:
-                    
+
                     break;
 
                 case FileType.notPermitted:
-                    
+
                     break;
 
                 default:
@@ -195,8 +197,8 @@ namespace Wifi.PlaylistEditor
             ListView_PlayListElements.Items.Add(ListView_Item);
         }
 
-  
-       
+
+
         private void listView_PlayListElements_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection selectedItem = ListView_PlaylistOverwie.SelectedItems;
@@ -206,19 +208,27 @@ namespace Wifi.PlaylistEditor
             }
         }
 
- 
+
         private void ListView_PlaylistOverwie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListView_PlaylistOverwie.Clear;
+            ListView_PlayListElements.Clear();
+            //delete_AllItemsInListView(ListView_PlaylistOverwie); //Delete all Items from this ListView
+
+
 
             ListView.SelectedListViewItemCollection selectedItem = ListView_PlaylistOverwie.SelectedItems;
             foreach (ListViewItem_PlaylistItem item in selectedItem)
             {
                 PlayList selectedPlayList = MeinPlaylistArchiv.Load(item.PlaylistGuid);
+                toolStripLabel_PlaylistAutor.Text = selectedPlayList.Autor;
+                this.Text = selectedPlayList.Autor + "'s PlaylistEditor";
+                lbl_playlistTitel.Text = selectedPlayList.Name;
+                lbl_playlistSpielzeit.Text = selectedPlayList.PlayList_Duration.ToString();
 
                 foreach (var IPlaylistItems in selectedPlayList.ItemList)
                 {
                     AddItem_ToListView(IPlaylistItems);
+                    
                 }
             }
         }
@@ -231,6 +241,38 @@ namespace Wifi.PlaylistEditor
         private void Form_Main_DragEnter(object sender, DragEventArgs e)
         {
 
+        }
+
+        private void delete_AllItemsInListView(ListView deleteAllItemsFromThisListView)
+        {
+            if (deleteAllItemsFromThisListView.SelectedItems != null)
+            {
+                {
+                    for (int i = 0; i < deleteAllItemsFromThisListView.Items.Count; i++)
+                    {
+                        if (deleteAllItemsFromThisListView.Items[i].Selected)
+                        {
+                            deleteAllItemsFromThisListView.Items[i].Remove();
+                            i--;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void toolStripButton_MailForm_TopMost_Click(object sender, EventArgs e)
+        {
+            if (this.TopMost == true)
+            {
+                this.TopMost = false;
+                toolStripButton_MailForm_TopMost.BackColor = System.Drawing.Color.LightGray;
+            }
+            else
+            {
+                this.TopMost = true;
+                toolStripButton_MailForm_TopMost.BackColor = System.Drawing.Color.Magenta;
+            }
         }
     }
 }

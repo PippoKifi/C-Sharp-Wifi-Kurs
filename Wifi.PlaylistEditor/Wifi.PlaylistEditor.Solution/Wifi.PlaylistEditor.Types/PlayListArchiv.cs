@@ -58,7 +58,6 @@ namespace Wifi.PlaylistEditor.Types
         public TimeSpan CalcTotPlayListDuration(Guid PlaylistGuid)
         {
             TimeSpan totPlaylistDuration = TimeSpan.Zero;
-
             foreach (var playlistArchiv in _playlistArchiv)
                   {
                 foreach (var playlistItem in playlistArchiv.ItemList)
