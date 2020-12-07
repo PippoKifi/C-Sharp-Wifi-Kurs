@@ -9,8 +9,8 @@ namespace Wifi.PlaylistEditor.Types
         string Extension { get; } //ToDo
         string Description { get; } //ToDo
 
-        void Load(int width); //ToDo
-        void Save(int width); //ToDo
+        void Load(PlayListArchiv playListArchiv_ToLoad); //ToDo
+        void Save(PlayListArchiv playListArchiv_ToSave); //ToDo
 
     }
 }

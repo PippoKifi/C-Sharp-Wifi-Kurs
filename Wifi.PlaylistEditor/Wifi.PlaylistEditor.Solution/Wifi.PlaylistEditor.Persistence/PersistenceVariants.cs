@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wifi.PlaylistEditor.Persistence
+namespace Wifi.PlaylistEditor.PersistSettings
 {
-    public class Class1
+    public enum PersistenceVariants
     {
+        XML,
+        MongoDB,
     }
 }

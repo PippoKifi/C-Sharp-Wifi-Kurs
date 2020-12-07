@@ -69,6 +69,11 @@ namespace Wifi.PlaylistEditor.Types
                 }
             }
             return totPlaylistDuration;
+        }
+
+
+        public void Save(IPlaylistRepository saveThisData)
+        {
 
         }
 
