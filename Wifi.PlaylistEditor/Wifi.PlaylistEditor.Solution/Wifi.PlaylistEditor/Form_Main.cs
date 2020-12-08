@@ -185,6 +185,7 @@ namespace Wifi.PlaylistEditor
             }
         }
 
+
         private void AddItem_ToListView(IPlaylistItems playlistItem)
         {
             ListViewItem_PlaylistItem ListView_Item = new ListViewItem_PlaylistItem();
@@ -198,28 +199,27 @@ namespace Wifi.PlaylistEditor
         }
 
 
-
         private void listView_PlayListElements_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection selectedItem = ListView_PlaylistOverwie.SelectedItems;
             foreach (ListViewItem_PlaylistItem item in selectedItem)
             {
-                //MeinPlaylistArchiv.Load(item.PlaylistGuid); //TODO - Richtiges Load eintragen
+                //IPlaylistItems selectedPlaylistItem = PlaylistArchiv.GiveMe_AnItem(item.PlaylistItemGuid);
+
+
+
+
             }
         }
 
 
         private void ListView_PlaylistOverwie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListView_PlayListElements.Clear();
-            //delete_AllItemsInListView(ListView_PlaylistOverwie); //Delete all Items from this ListView
-
-
-
+            ListView_PlayListElements.Clear(); //Alle Elemente in ListView löschen
             ListView.SelectedListViewItemCollection selectedItem = ListView_PlaylistOverwie.SelectedItems;
             foreach (ListViewItem_PlaylistItem item in selectedItem)
             {
-                PlayList selectedPlayList = MeinPlaylistArchiv.Load(item.PlaylistGuid);
+                PlayList selectedPlayList = MeinPlaylistArchiv.GiveMe_AnPlayList(item.PlaylistGuid);
                 toolStripLabel_PlaylistAutor.Text = selectedPlayList.Autor;
                 this.Text = selectedPlayList.Autor + "'s PlaylistEditor";
                 lbl_playlistTitel.Text = selectedPlayList.Name;
@@ -228,20 +228,23 @@ namespace Wifi.PlaylistEditor
                 foreach (var IPlaylistItems in selectedPlayList.ItemList)
                 {
                     AddItem_ToListView(IPlaylistItems);
-                    
+
                 }
             }
         }
+
 
         private void Form_Main_DragDrop(object sender, DragEventArgs e)
         {
 
         }
 
+
         private void Form_Main_DragEnter(object sender, DragEventArgs e)
         {
 
         }
+
 
         private void delete_AllItemsInListView(ListView deleteAllItemsFromThisListView)
         {
@@ -261,6 +264,25 @@ namespace Wifi.PlaylistEditor
 
         }
 
+
+        private void delete_SigleItemsInListView(ListView deleteSelectedItem_InThisListView)
+        {
+            if (deleteSelectedItem_InThisListView.SelectedItems != null)
+            {
+                {
+                    for (int i = 0; i < deleteSelectedItem_InThisListView.Items.Count; i++)
+                    {
+                        if (deleteSelectedItem_InThisListView.Items[i].Selected)
+                        {
+                            deleteSelectedItem_InThisListView.Items[i].Remove();
+                            i--;
+                        }
+                    }
+                }
+            }
+        }
+
+
         private void toolStripButton_MailForm_TopMost_Click(object sender, EventArgs e)
         {
             if (this.TopMost == true)
@@ -274,5 +296,69 @@ namespace Wifi.PlaylistEditor
                 toolStripButton_MailForm_TopMost.BackColor = System.Drawing.Color.Magenta;
             }
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void toolStripButton_FullDelete_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItem = ListView_PlaylistOverwie.SelectedItems;
+            foreach (ListViewItem_PlaylistItem item in selectedItem)
+            {
+                DialogResult dialogResult = MessageBox.Show("Möchtest du tatsächlich die PlayList löschen?", "Alles löschen", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MeinPlaylistArchiv.DeleteAllObjects();
+                }
+                else if (dialogResult == DialogResult.No)
+                { //do something else }
+                }
+            }
+        }
+
+
+        private void toolStripButton_DeletePlaylist_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItem_InListView = ListView_PlaylistOverwie.SelectedItems;
+            foreach (ListViewItem_PlaylistItem item in selectedItem_InListView)
+            {
+                PlayList selectedPlayList = MeinPlaylistArchiv.GiveMe_AnPlayList(item.PlaylistGuid);
+                DialogResult dialogResult = MessageBox.Show("Möchtest du tatsächlich der KOMPLETTE PlaylistEditor bereinigen?", "Playlist löschen", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MeinPlaylistArchiv.DeletePlaylist(selectedPlayList.PlayListGuid);
+                    delete_SigleItemsInListView(ListView_PlaylistOverwie); //ListView Item löschen
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+            }
+        }
+
+
+        private void toolStripButton_DeleteSelectedPlaylistItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItem_InListView = ListView_PlayListElements.SelectedItems;
+            foreach (ListViewItem_PlaylistItem item in selectedItem_InListView)
+            {
+                IPlaylistItems selectedPlayList_Item = MeinPlaylistArchiv.GiveMe_AnItem(item.PlaylistGuid);
+                DialogResult dialogResult = MessageBox.Show("Möchtest sie tatsächlich dieses ITEAM löschen?", "Playlist-Element löschen", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MeinPlaylistArchiv.DeleteItem(selectedPlayList_Item.Item_Guid, item.PlaylistItemGuid);
+                    delete_SigleItemsInListView(ListView_PlayListElements);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+            }
+        }
+
+
     }
 }
