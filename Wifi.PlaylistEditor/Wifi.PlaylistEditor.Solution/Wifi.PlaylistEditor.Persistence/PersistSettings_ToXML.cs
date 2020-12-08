@@ -9,23 +9,41 @@ namespace Wifi.PlaylistEditor.PersistSettings
 {
     public class PersistSettings_ToXML : IPlaylistRepository
     {
-        public string Extension => throw new NotImplementedException();
+        private string _description;
+        //private FileType _extension;
 
-        public string Description => throw new NotImplementedException();
+        public string Description
+        {
+            get { return _description; }
+            set { _description = value; }
+        }
 
-        public void Load(int width)
+        //public FileType Extension
+        //{
+        //    get { return _extension; }
+        //    set { _extension = value; }
+        //}
+
+
+        //public PersistSettings_ToXML(PlaylistArchiv playListArchiv_ToLoad)
+        //{
+        //    //Nicht benötigt -> Standard Konstruktor verwenden
+        //}
+
+
+        public void Load(PlaylistArchiv playListArchiv_ToLoad)
         {
             throw new NotImplementedException();
         }
 
-        public void Save(int width)
+        public void Save(PlaylistArchiv playListArchiv_ToSave)
         {
             throw new NotImplementedException();
         }
 
 
 
-        //Use MySetting possible?
-       
+
+
     }
 }

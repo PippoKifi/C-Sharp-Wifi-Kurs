@@ -33,10 +33,10 @@ namespace Wifi.PlaylistEditor
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_NeuePlalistAnlegen = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_DeletePlaylist = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_SaveSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_FullDelete = new System.Windows.Forms.ToolStripButton();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
@@ -54,7 +54,7 @@ namespace Wifi.PlaylistEditor
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_DeleteSelectedPlaylistItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -62,16 +62,16 @@ namespace Wifi.PlaylistEditor
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ListView_PlayListElements = new System.Windows.Forms.ListView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel11 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel_Artist = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel_Titel = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel10 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel_Duration = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel10 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel_Artist = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel11 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel_Titel = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip6 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel16 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel_ItemPath = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStrip3.SuspendLayout();
@@ -89,10 +89,10 @@ namespace Wifi.PlaylistEditor
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton_NeuePlalistAnlegen,
             this.toolStripSeparator2,
-            this.toolStripButton5,
-            this.toolStripButton3,
+            this.toolStripButton_DeletePlaylist,
+            this.toolStripButton_SaveSettings,
             this.toolStripSeparator7,
-            this.toolStripButton6});
+            this.toolStripButton_FullDelete});
             this.toolStrip2.Location = new System.Drawing.Point(0, 34);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
@@ -116,43 +116,45 @@ namespace Wifi.PlaylistEditor
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(37, 6);
             // 
-            // toolStripButton5
+            // toolStripButton_DeletePlaylist
             // 
-            this.toolStripButton5.AutoSize = false;
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = global::Wifi.PlaylistEditor.Properties.Resources.File_Delete;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(40, 40);
-            this.toolStripButton5.Text = "toolStripButton1";
-            this.toolStripButton5.ToolTipText = "Icon Löschen";
+            this.toolStripButton_DeletePlaylist.AutoSize = false;
+            this.toolStripButton_DeletePlaylist.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_DeletePlaylist.Image = global::Wifi.PlaylistEditor.Properties.Resources.File_Delete;
+            this.toolStripButton_DeletePlaylist.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_DeletePlaylist.Name = "toolStripButton_DeletePlaylist";
+            this.toolStripButton_DeletePlaylist.Size = new System.Drawing.Size(40, 40);
+            this.toolStripButton_DeletePlaylist.Text = "toolStripButton1";
+            this.toolStripButton_DeletePlaylist.ToolTipText = "Icon Löschen";
+            this.toolStripButton_DeletePlaylist.Click += new System.EventHandler(this.toolStripButton_DeletePlaylist_Click);
             // 
-            // toolStripButton3
+            // toolStripButton_SaveSettings
             // 
-            this.toolStripButton3.AutoSize = false;
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::Wifi.PlaylistEditor.Properties.Resources.Save;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(40, 40);
-            this.toolStripButton3.Text = "toolStripButton1";
-            this.toolStripButton3.ToolTipText = "Playlist Sichern ";
+            this.toolStripButton_SaveSettings.AutoSize = false;
+            this.toolStripButton_SaveSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_SaveSettings.Image = global::Wifi.PlaylistEditor.Properties.Resources.Save;
+            this.toolStripButton_SaveSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_SaveSettings.Name = "toolStripButton_SaveSettings";
+            this.toolStripButton_SaveSettings.Size = new System.Drawing.Size(40, 40);
+            this.toolStripButton_SaveSettings.Text = "toolStripButton1";
+            this.toolStripButton_SaveSettings.ToolTipText = "Playlist Sichern ";
+            this.toolStripButton_SaveSettings.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(37, 6);
             // 
-            // toolStripButton6
+            // toolStripButton_FullDelete
             // 
-            this.toolStripButton6.AutoSize = false;
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Image = global::Wifi.PlaylistEditor.Properties.Resources.GarbageCollector;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(40, 40);
-            this.toolStripButton6.Text = "toolStripButton1";
-            this.toolStripButton6.ToolTipText = "Playlist leeren";
+            this.toolStripButton_FullDelete.AutoSize = false;
+            this.toolStripButton_FullDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_FullDelete.Image = global::Wifi.PlaylistEditor.Properties.Resources.GarbageCollector;
+            this.toolStripButton_FullDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_FullDelete.Name = "toolStripButton_FullDelete";
+            this.toolStripButton_FullDelete.Size = new System.Drawing.Size(40, 40);
+            this.toolStripButton_FullDelete.ToolTipText = "Playlist leeren";
+            this.toolStripButton_FullDelete.Click += new System.EventHandler(this.toolStripButton_FullDelete_Click);
             // 
             // trackBar1
             // 
@@ -302,7 +304,7 @@ namespace Wifi.PlaylistEditor
             this.toolStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton8,
             this.toolStripSeparator9,
-            this.toolStripButton9,
+            this.toolStripButton_DeleteSelectedPlaylistItem,
             this.toolStripSeparator10,
             this.toolStripButton10});
             this.toolStrip5.Location = new System.Drawing.Point(742, 63);
@@ -328,16 +330,17 @@ namespace Wifi.PlaylistEditor
             this.toolStripSeparator9.Name = "toolStripSeparator9";
             this.toolStripSeparator9.Size = new System.Drawing.Size(37, 6);
             // 
-            // toolStripButton9
+            // toolStripButton_DeleteSelectedPlaylistItem
             // 
-            this.toolStripButton9.AutoSize = false;
-            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton9.Image = global::Wifi.PlaylistEditor.Properties.Resources.File_Delete;
-            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(40, 40);
-            this.toolStripButton9.Text = "toolStripButton1";
-            this.toolStripButton9.ToolTipText = "Icon Löschen";
+            this.toolStripButton_DeleteSelectedPlaylistItem.AutoSize = false;
+            this.toolStripButton_DeleteSelectedPlaylistItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_DeleteSelectedPlaylistItem.Image = global::Wifi.PlaylistEditor.Properties.Resources.File_Delete;
+            this.toolStripButton_DeleteSelectedPlaylistItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_DeleteSelectedPlaylistItem.Name = "toolStripButton_DeleteSelectedPlaylistItem";
+            this.toolStripButton_DeleteSelectedPlaylistItem.Size = new System.Drawing.Size(40, 40);
+            this.toolStripButton_DeleteSelectedPlaylistItem.Text = "toolStripButton1";
+            this.toolStripButton_DeleteSelectedPlaylistItem.ToolTipText = "Icon Löschen";
+            this.toolStripButton_DeleteSelectedPlaylistItem.Click += new System.EventHandler(this.toolStripButton_DeleteSelectedPlaylistItem_Click);
             // 
             // toolStripSeparator10
             // 
@@ -405,12 +408,26 @@ namespace Wifi.PlaylistEditor
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripLabel11
+            // toolStripLabel_Duration
             // 
-            this.toolStripLabel11.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel11.Name = "toolStripLabel11";
-            this.toolStripLabel11.Size = new System.Drawing.Size(41, 22);
-            this.toolStripLabel11.Text = "Artist:";
+            this.toolStripLabel_Duration.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel_Duration.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel_Duration.Name = "toolStripLabel_Duration";
+            this.toolStripLabel_Duration.Size = new System.Drawing.Size(63, 22);
+            this.toolStripLabel_Duration.Text = "00:00:00";
+            // 
+            // toolStripLabel10
+            // 
+            this.toolStripLabel10.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel10.Name = "toolStripLabel10";
+            this.toolStripLabel10.Size = new System.Drawing.Size(41, 22);
+            this.toolStripLabel10.Text = "Dauer:";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripLabel_Artist
             // 
@@ -420,12 +437,18 @@ namespace Wifi.PlaylistEditor
             this.toolStripLabel_Artist.Size = new System.Drawing.Size(105, 22);
             this.toolStripLabel_Artist.Text = "Max Mustermann";
             // 
-            // toolStripLabel4
+            // toolStripLabel11
             // 
-            this.toolStripLabel4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(34, 22);
-            this.toolStripLabel4.Text = "Titel:";
+            this.toolStripLabel11.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel11.Name = "toolStripLabel11";
+            this.toolStripLabel11.Size = new System.Drawing.Size(41, 22);
+            this.toolStripLabel11.Text = "Artist:";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripLabel_Titel
             // 
@@ -435,32 +458,12 @@ namespace Wifi.PlaylistEditor
             this.toolStripLabel_Titel.Size = new System.Drawing.Size(74, 22);
             this.toolStripLabel_Titel.Text = "Cooler Song";
             // 
-            // toolStripSeparator6
+            // toolStripLabel4
             // 
-            this.toolStripSeparator6.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel10
-            // 
-            this.toolStripLabel10.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel10.Name = "toolStripLabel10";
-            this.toolStripLabel10.Size = new System.Drawing.Size(41, 22);
-            this.toolStripLabel10.Text = "Dauer:";
-            // 
-            // toolStripLabel_Duration
-            // 
-            this.toolStripLabel_Duration.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel_Duration.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripLabel_Duration.Name = "toolStripLabel_Duration";
-            this.toolStripLabel_Duration.Size = new System.Drawing.Size(63, 22);
-            this.toolStripLabel_Duration.Text = "00:00:00";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            this.toolStripLabel4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(34, 22);
+            this.toolStripLabel4.Text = "Titel:";
             // 
             // toolStrip6
             // 
@@ -469,7 +472,7 @@ namespace Wifi.PlaylistEditor
             this.toolStrip6.Font = new System.Drawing.Font("Segoe Print", 6.25F, System.Drawing.FontStyle.Bold);
             this.toolStrip6.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel16});
+            this.toolStripLabel_ItemPath});
             this.toolStrip6.Location = new System.Drawing.Point(42, 411);
             this.toolStrip6.Name = "toolStrip6";
             this.toolStrip6.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
@@ -477,13 +480,13 @@ namespace Wifi.PlaylistEditor
             this.toolStrip6.TabIndex = 11;
             this.toolStrip6.Text = "toolStrip6";
             // 
-            // toolStripLabel16
+            // toolStripLabel_ItemPath
             // 
-            this.toolStripLabel16.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel16.Font = new System.Drawing.Font("Segoe Print", 7.25F, System.Drawing.FontStyle.Bold);
-            this.toolStripLabel16.Name = "toolStripLabel16";
-            this.toolStripLabel16.Size = new System.Drawing.Size(187, 22);
-            this.toolStripLabel16.Text = "C:\\Temp\\MySongs\\CoolerSong.mp3";
+            this.toolStripLabel_ItemPath.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel_ItemPath.Font = new System.Drawing.Font("Segoe Print", 7.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel_ItemPath.Name = "toolStripLabel_ItemPath";
+            this.toolStripLabel_ItemPath.Size = new System.Drawing.Size(187, 22);
+            this.toolStripLabel_ItemPath.Text = "C:\\Temp\\MySongs\\CoolerSong.mp3";
             // 
             // Form_Main
             // 
@@ -533,10 +536,10 @@ namespace Wifi.PlaylistEditor
 
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton toolStripButton_FullDelete;
+        private System.Windows.Forms.ToolStripButton toolStripButton_DeletePlaylist;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton_SaveSettings;
         private System.Windows.Forms.ToolStripButton toolStripButton_NeuePlalistAnlegen;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.ToolStrip toolStrip3;
@@ -555,7 +558,7 @@ namespace Wifi.PlaylistEditor
         private System.Windows.Forms.ToolStrip toolStrip5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripButton toolStripButton8;
-        private System.Windows.Forms.ToolStripButton toolStripButton9;
+        private System.Windows.Forms.ToolStripButton toolStripButton_DeleteSelectedPlaylistItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -573,7 +576,7 @@ namespace Wifi.PlaylistEditor
         private System.Windows.Forms.ToolStripLabel toolStripLabel_Duration;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStrip toolStrip6;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel16;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel_ItemPath;
     }
 }
 

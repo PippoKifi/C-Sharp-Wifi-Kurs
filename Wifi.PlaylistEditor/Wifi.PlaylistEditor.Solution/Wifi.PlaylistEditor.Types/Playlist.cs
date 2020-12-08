@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wifi.PlaylistEditor.Types
 {
-    public class PlayList
+    public class PlayList : IDisposable
     {
         private string _name;
         private string _autor;
@@ -81,6 +81,10 @@ namespace Wifi.PlaylistEditor.Types
 
         public void Load(IPlaylistItems ItemToAdd)
         {
+            
+            
+
+            
             PLayListDuration(ItemToAdd.PlayList_Guid);
         }
 
@@ -88,6 +92,8 @@ namespace Wifi.PlaylistEditor.Types
         {
 
         }
+        
+
 
         /// <summary>
         /// Berechnet die gesamte Spielzeit von der angegebenen Playlist
@@ -105,11 +111,16 @@ namespace Wifi.PlaylistEditor.Types
             }
 
             return _playList_Duration;
-
-
-
         }
 
+        public void Dispose()
+        {
+            // close Handle;
+            //this.Close();
+
+            // make sure Finalizer will not be called...
+            GC.SuppressFinalize(this);
+        }
 
 
     }

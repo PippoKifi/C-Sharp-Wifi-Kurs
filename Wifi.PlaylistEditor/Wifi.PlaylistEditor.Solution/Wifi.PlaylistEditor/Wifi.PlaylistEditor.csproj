@@ -61,7 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileType.cs" />
     <Compile Include="AskTheEndUserSomething.cs" />
     <Compile Include="Form_Main.cs">
       <SubType>Form</SubType>

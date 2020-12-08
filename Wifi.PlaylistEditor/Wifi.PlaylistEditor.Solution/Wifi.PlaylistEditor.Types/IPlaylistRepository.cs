@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace Wifi.PlaylistEditor.Types
 {
     public interface IPlaylistRepository
     {
-        string Extension { get; } //ToDo
+        //FileType Extension { get; } //ToDo
         string Description { get; } //ToDo
 
-        void Load(PlayListArchiv playListArchiv_ToLoad); //ToDo
-        void Save(PlayListArchiv playListArchiv_ToSave); //ToDo
+        void Load(PlaylistArchiv playListArchiv_ToLoad); //ToDo
+        void Save(PlaylistArchiv playListArchiv_ToSave); //ToDo
 
     }
 }

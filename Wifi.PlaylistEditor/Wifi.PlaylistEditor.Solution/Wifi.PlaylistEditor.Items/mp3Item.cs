@@ -71,8 +71,6 @@ namespace Wifi.PlaylistEditor.Items
             set { _titel = value; }
         }
 
-
-
         private void ExtractMetadateInfosfromFile(FileInfo mp3File)
         {
             TagLib.File file = TagLib.File.Create(mp3File.FullName);
