@@ -152,7 +152,7 @@
       <Name>Wifi.PlaylistEditor.Items</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wifi.PlaylistEditor.Types\Wifi.PlaylistEditor.Types.csproj">
-      <Project>{4ef5166a-d1e3-464f-8dea-6973d021e66e}</Project>
+      <Project>{8017dbe6-44a4-488b-8880-ca3a85195781}</Project>
       <Name>Wifi.PlaylistEditor.Types</Name>
     </ProjectReference>
   </ItemGroup>

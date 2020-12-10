@@ -186,7 +186,7 @@ namespace Wifi.PlaylistEditor
         }
 
 
-        private void AddItem_ToListView(IPlaylistItems playlistItem)
+        private void AddItem_ToListView(IPlaylistItem playlistItem)
         {
             ListViewItem_PlaylistItem ListView_Item = new ListViewItem_PlaylistItem();
             ListView_Item.Text = playlistItem.Titel;
@@ -345,7 +345,7 @@ namespace Wifi.PlaylistEditor
             ListView.SelectedListViewItemCollection selectedItem_InListView = ListView_PlayListElements.SelectedItems;
             foreach (ListViewItem_PlaylistItem item in selectedItem_InListView)
             {
-                IPlaylistItems selectedPlayList_Item = MeinPlaylistArchiv.GiveMe_AnItem(item.PlaylistGuid);
+                IPlaylistItem selectedPlayList_Item = MeinPlaylistArchiv.GiveMe_AnItem(item.PlaylistGuid);
                 DialogResult dialogResult = MessageBox.Show("Möchtest sie tatsächlich dieses ITEAM löschen?", "Playlist-Element löschen", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {

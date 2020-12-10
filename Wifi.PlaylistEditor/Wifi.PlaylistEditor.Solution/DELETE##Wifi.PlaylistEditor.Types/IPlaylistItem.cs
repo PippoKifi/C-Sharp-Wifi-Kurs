@@ -1,15 +1,16 @@
 ﻿using System;
 using System.IO;
+using System.Drawing;
 
 namespace Wifi.PlaylistEditor.Types
 {
-    public interface IPlaylistItems
+    public interface IPlaylistItem
     {
         string Titel { get; }
         String Artist { get; }
         TimeSpan Duration { get; }
         String Path { get; }
-        //Image Thumbnail { get; }
+        Image Thumbnail { get; set;  }
         Guid Item_Guid { get; }
         Guid PlayList_Guid { get; }
     }

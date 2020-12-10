@@ -1,11 +1,14 @@
 ﻿using Microsoft.WindowsAPICodePack.Shell;
 using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using Wifi.PlaylistEditor.Types;
 
+
 namespace Wifi.PlaylistEditor.Items
 {
-    public class mp3Item : IPlaylistItems
+    public class mp3Item : IPlaylistItem
     {
         /*Infos
         //https://github.com/mono/taglib-sharp
@@ -27,13 +30,15 @@ namespace Wifi.PlaylistEditor.Items
         private string _path;
         private Guid _playlist_Guid;
         private Guid _item_Guid;
+        private Image _thumbnail;
+
 
         public mp3Item(FileInfo path, Guid playlist_Guid)
         {
             _path = path.FullName;
             _playlist_Guid = playlist_Guid;
             _item_Guid = Guid.NewGuid();
-            ExtractMetadateInfosfromFile(path);
+            ReadIdv3TagsFromFile(path);
         }
 
 
@@ -71,19 +76,32 @@ namespace Wifi.PlaylistEditor.Items
             set { _titel = value; }
         }
 
-        private void ExtractMetadateInfosfromFile(FileInfo mp3File)
+        public Image Thumbnail
+        {
+            get { return _thumbnail; }
+            set { _thumbnail = value; }
+        }
+
+
+        private void ReadIdv3TagsFromFile(FileInfo mp3File)
         {
             TagLib.File file = TagLib.File.Create(mp3File.FullName);
             _titel = file.Tag.Title;
             _artist = file.Tag.FirstPerformer;
             _duration = file.Properties.Duration;
 
-            //String album = file.Tag.Album;
+            if (file.Tag.Pictures != null && file.Tag.Pictures.Length > 0)
+            {
+                //https://stackoverflow.com/questions/10247216/c-sharp-mp3-id-tags-with-taglib-album-art
+                _thumbnail = Image.FromStream(new MemoryStream(file.Tag.Pictures[0].Data.Data));
+            }
+            else
+            {
+                _thumbnail = null;
+                Debug.WriteLine($"{System.IO.Path.GetFileName(_path)}: No Image stream found.");
+            }
         }
-
-
-        }
-
-
-
     }
+
+
+}
