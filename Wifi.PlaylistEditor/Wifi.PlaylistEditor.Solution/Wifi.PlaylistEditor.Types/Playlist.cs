@@ -8,8 +8,11 @@ namespace Wifi.PlaylistEditor.Types
         private string _name;
         private string _autor;
         private Guid _playlistGuid;
-        private List<IPlaylistItem> _itemList; //Playlist "HAT EIN" IPlaylistItems
         private TimeSpan _playList_Duration;
+        private DateTime _createdAt;
+        private List<IPlaylistItem> _items; //Playlist "HAT EIN" IPlaylistItems
+        
+ 
 
         //################
         //### KONSTRUKTOR ###
@@ -17,7 +20,7 @@ namespace Wifi.PlaylistEditor.Types
         {
             _name = name;
             _autor = autor;
-            _itemList = new List<IPlaylistItem>();
+            _items = new List<IPlaylistItem>();
             _playlistGuid = Guid.NewGuid();
             _playList_Duration = TimeSpan.Zero;
         }
@@ -37,10 +40,9 @@ namespace Wifi.PlaylistEditor.Types
             set { _autor = value; }
         }
 
-        public List<IPlaylistItem> ItemList
+        public IEnumerable<IPlaylistItem> ItemList //IEnumerable um die List so einfach wie möglich zu halten nach aussen (Nur Leserechte auf die Liste)
         {
-            get { return _itemList; }
-            set { _itemList = value; }
+            get { return _items; }
         }
 
         public Guid PlayListGuid
@@ -55,6 +57,11 @@ namespace Wifi.PlaylistEditor.Types
             set { _playList_Duration = value; }
         }
 
+        public DateTime CreatedAt
+        {
+            get { return _createdAt; }
+        }
+
 
         //################
         //### METHODEN ###
@@ -65,7 +72,7 @@ namespace Wifi.PlaylistEditor.Types
         /// <param name="ItemToAdd"></param>
         public void Add(IPlaylistItem ItemToAdd)
         {
-            _itemList.Add(ItemToAdd);
+            _items.Add(ItemToAdd);
             PLayListDuration(ItemToAdd.PlayList_Guid);
         }
 
@@ -102,7 +109,7 @@ namespace Wifi.PlaylistEditor.Types
         /// <returns>Spielzeit in TimeSpan-Format</returns>
         public TimeSpan PLayListDuration(Guid Playlist_Guid)
         {
-            foreach (var playlistItem in _itemList)
+            foreach (var playlistItem in _items)
             {
                 if (playlistItem.PlayList_Guid == Playlist_Guid)
                 {
