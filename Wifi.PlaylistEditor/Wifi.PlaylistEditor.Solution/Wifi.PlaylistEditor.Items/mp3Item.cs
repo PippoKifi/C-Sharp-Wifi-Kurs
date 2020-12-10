@@ -38,9 +38,26 @@ namespace Wifi.PlaylistEditor.Items
             _path = path.FullName;
             _playlist_Guid = playlist_Guid;
             _item_Guid = Guid.NewGuid();
-            ReadIdv3TagsFromFile(path);
+
+            if (string.IsNullOrWhiteSpace(_path) || !path.Exists)
+            {
+                InitFiledsWithEmpty();
+            }
+            else
+            {
+                ReadIdv3TagsFromFile(path);
+            }
+
+
         }
 
+        private void InitFiledsWithEmpty()
+        {
+            _artist = string.Empty;
+            _duration = TimeSpan.Zero;
+            _thumbnail = null;
+            _titel = "--[File not found]--";
+        }
 
         public Guid PlayList_Guid
         {
@@ -88,6 +105,7 @@ namespace Wifi.PlaylistEditor.Items
             TagLib.File file = TagLib.File.Create(mp3File.FullName);
             _titel = file.Tag.Title;
             _artist = file.Tag.FirstPerformer;
+            //_artist = file.Tag.Performers[0];
             _duration = file.Properties.Duration;
 
             if (file.Tag.Pictures != null && file.Tag.Pictures.Length > 0)
