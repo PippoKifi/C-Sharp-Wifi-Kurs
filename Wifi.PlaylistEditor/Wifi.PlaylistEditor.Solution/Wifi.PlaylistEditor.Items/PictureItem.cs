@@ -7,7 +7,7 @@ namespace Wifi.PlaylistEditor.Items
 {
     public class PictureItem : IPlaylistItem
     {
-        public string Titel => throw new NotImplementedException();
+        public string Title => throw new NotImplementedException();
 
         public string Artist => throw new NotImplementedException();
 

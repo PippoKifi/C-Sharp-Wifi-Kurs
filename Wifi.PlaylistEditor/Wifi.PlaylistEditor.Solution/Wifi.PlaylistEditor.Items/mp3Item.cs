@@ -7,23 +7,9 @@ using Wifi.PlaylistEditor.Types;
 
 namespace Wifi.PlaylistEditor.Items
 {
-    public class mp3Item : IPlaylistItem
+    public class Mp3Item : IPlaylistItem
     {
-        /*Infos
-        //https://github.com/mono/taglib-sharp
-        //https://de.wikipedia.org/wiki/M3U
-
-        /*Erweiterte M3U
-        Im Unterschied zur einfachen M3U werden in der erweiterten M3U zusätzlich Metadaten und ein Kopfdatenbereich verwendet.
-        Beispiel:
-        #EXTM3U
-        #EXTINF:221,Queen - Bohemian Rhapsody
-        Titel 1.mp3
-        #EXTINF:473,Dire Straits - Walk Of Life
-        Pop\Meine Auswahl\Titel 2.ogg*/
-
-
-        private string _titel;
+        private string _title;
         private string _artist;
         private TimeSpan _duration;
         private string _path;
@@ -31,23 +17,50 @@ namespace Wifi.PlaylistEditor.Items
         private Guid _item_Guid;
         private Image _thumbnail;
 
-
-        public mp3Item(FileInfo path, Guid playlist_Guid)
+        public Mp3Item(FileInfo path, Guid playlist_Guid)
         {
-            _path = path.FullName;
-            _playlist_Guid = playlist_Guid;
-            _item_Guid = Guid.NewGuid();
-
-            if (string.IsNullOrWhiteSpace(_path) || !path.Exists)
+            try //Frage -- Kann/Soll ein Try-Catch in einem Konstruktor verwendet werden?
             {
+                _path = path.Name;
+                if (File.Exists(_path))
+                {
+                    ReadIdv3TagsFromFile(path);
+                }
+                else
+                {
+                    _path = "--[Path not Exist!]--";
+                    InitFiledsWithEmpty();
+                }
+            }
+            catch (ArgumentException)
+            {
+                _path = "--[ArgumentException!]--";
                 InitFiledsWithEmpty();
             }
-            else
+            catch (System.NullReferenceException)
             {
-                ReadIdv3TagsFromFile(path);
+                _path = "--[NullReferenceException!]--";
+                InitFiledsWithEmpty();
+            }
+            catch (System.IO.DirectoryNotFoundException)
+            {
+                _path = "--[DirectoryNotFoundException!]--";
+                InitFiledsWithEmpty();
             }
 
+            catch (System.IO.PathTooLongException)
+            {
+                _path = "--[PathTooLongException!]--";
+                InitFiledsWithEmpty();
+            }
+            catch (NotSupportedException)
+            {
+                _path = "--[NotSupportedException!]--";
+                InitFiledsWithEmpty();
+            }
 
+            _playlist_Guid = playlist_Guid;
+            _item_Guid = Guid.NewGuid();
         }
 
         private void InitFiledsWithEmpty()
@@ -55,7 +68,7 @@ namespace Wifi.PlaylistEditor.Items
             _artist = string.Empty;
             _duration = TimeSpan.Zero;
             _thumbnail = null;
-            _titel = "--[File not found]--";
+            _title = "--[File not found]--";
         }
 
         public Guid PlayList_Guid
@@ -86,10 +99,10 @@ namespace Wifi.PlaylistEditor.Items
             set { _artist = value; }
         }
 
-        public string Titel
+        public string Title
         {
-            get { return _titel; }
-            set { _titel = value; }
+            get { return _title; }
+            set { _title = value; }
         }
 
         public Image Thumbnail
@@ -101,8 +114,21 @@ namespace Wifi.PlaylistEditor.Items
 
         private void ReadIdv3TagsFromFile(FileInfo mp3File)
         {
+            /*Infos
+https://github.com/mono/taglib-sharp
+https://de.wikipedia.org/wiki/M3U
+
+Erweiterte M3U
+Im Unterschied zur einfachen M3U werden in der erweiterten M3U zusätzlich Metadaten und ein Kopfdatenbereich verwendet.
+Beispiel:
+#EXTM3U
+#EXTINF:221,Queen - Bohemian Rhapsody
+Titel 1.mp3
+#EXTINF:473,Dire Straits - Walk Of Life
+Pop\Meine Auswahl\Titel 2.ogg*/
+
             TagLib.File file = TagLib.File.Create(mp3File.FullName);
-            _titel = file.Tag.Title;
+            _title = file.Tag.Title;
             _artist = file.Tag.FirstPerformer;
             //_artist = file.Tag.Performers[0];
             _duration = file.Properties.Duration;

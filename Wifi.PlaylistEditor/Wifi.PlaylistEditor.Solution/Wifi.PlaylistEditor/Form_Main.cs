@@ -166,7 +166,7 @@ namespace Wifi.PlaylistEditor
             switch (type_OfNewElement)
             {
                 case FileType.mp3:
-                    mp3Item myNewmp3Item = new mp3Item(fullFile, Playlist_IAmCurrentlyUsing.PlayListGuid);
+                    Mp3Item myNewmp3Item = new Mp3Item(fullFile, Playlist_IAmCurrentlyUsing.PlayListGuid);
                     Playlist_IAmCurrentlyUsing.Add(myNewmp3Item); //Item der Playlist hinzufügen
                     AddItem_ToListView(myNewmp3Item); //Item in ListView erstellen
                     lbl_playlistSpielzeit.Text = Playlist_IAmCurrentlyUsing.PlayList_Duration.ToString();
@@ -189,8 +189,8 @@ namespace Wifi.PlaylistEditor
         private void AddItem_ToListView(IPlaylistItem playlistItem)
         {
             ListViewItem_PlaylistItem ListView_Item = new ListViewItem_PlaylistItem();
-            ListView_Item.Text = playlistItem.Titel;
-            ListView_Item.ToolTipText = playlistItem.Titel + " | " + playlistItem.Path;
+            ListView_Item.Text = playlistItem.Title;
+            ListView_Item.ToolTipText = playlistItem.Title + " | " + playlistItem.Path;
             ListView_Item.PlaylistGuid = playlistItem.PlayList_Guid;
             ListView_Item.PlaylistItemGuid = playlistItem.Item_Guid;
             //ListView_Item.SubItems.Add(playlistItem.Duration.ToString);
