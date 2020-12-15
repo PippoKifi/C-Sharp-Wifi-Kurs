@@ -13,5 +13,9 @@ namespace Wifi.PlaylistEditor.Types
         Image Thumbnail { get; set;  }
         Guid Item_Guid { get; }
         Guid PlayList_Guid { get; }
+
+        void Add(IPlaylistItem ItemToAdd);
+
+
     }
 }

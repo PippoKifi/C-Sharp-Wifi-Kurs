@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A6A477C9-4214-4845-87CD-B56EB9EA3862}</ProjectGuid>
+    <ProjectGuid>{8830A74B-4FED-45A0-922E-3ED8E8489070}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wifi.PlaylistEditor.Items.Tests</RootNamespace>
-    <AssemblyName>Wifi.PlaylistEditor.Items.Tests</AssemblyName>
+    <RootNamespace>Wifi.PlaylistEditor.Types.Tests</RootNamespace>
+    <AssemblyName>Wifi.PlaylistEditor.Types.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -47,7 +47,6 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -62,17 +61,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="mp3ItemTests.cs" />
+    <Compile Include="Playlist.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wifi.PlaylistEditor.Items\Wifi.PlaylistEditor.Items.csproj">
-      <Project>{97fbfa7e-ab2e-4d91-9e7a-dcfc3660a2fd}</Project>
-      <Name>Wifi.PlaylistEditor.Items</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Wifi.PlaylistEditor.Types\Wifi.PlaylistEditor.Types.csproj">
       <Project>{8017dbe6-44a4-488b-8880-ca3a85195781}</Project>
       <Name>Wifi.PlaylistEditor.Types</Name>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wifi.PlaylistEditor.Types
 {
-    public class PlayList : IDisposable
+    public class PlayList : IPlayList
     {
         private string _name;
         private string _autor;
@@ -11,16 +11,19 @@ namespace Wifi.PlaylistEditor.Types
         private TimeSpan _playList_Duration;
         private DateTime _createdAt;
         private List<IPlaylistItem> _items; //Playlist "HAT EIN" IPlaylistItems
-        
- 
+
+
 
         //################
         //### KONSTRUKTOR ###
-        public PlayList(string name, string autor)
+        public PlayList(string name, string autor, DateTime createdAt)
         {
             _name = name;
             _autor = autor;
             _items = new List<IPlaylistItem>();
+            _createdAt = createdAt;
+            _items = new List<IPlaylistItem>();
+
             _playlistGuid = Guid.NewGuid();
             _playList_Duration = TimeSpan.Zero;
         }
@@ -88,10 +91,10 @@ namespace Wifi.PlaylistEditor.Types
 
         public void Load(IPlaylistItem ItemToAdd)
         {
-            
-            
 
-            
+
+
+
             PLayListDuration(ItemToAdd.PlayList_Guid);
         }
 
@@ -99,7 +102,7 @@ namespace Wifi.PlaylistEditor.Types
         {
 
         }
-        
+
 
 
         /// <summary>
@@ -114,10 +117,31 @@ namespace Wifi.PlaylistEditor.Types
                 if (playlistItem.PlayList_Guid == Playlist_Guid)
                 {
                     _playList_Duration += playlistItem.Duration;
+                    //_playList_Duration += PlayList_Duration.Add();
                 }
             }
 
             return _playList_Duration;
+        }
+
+        public int Count
+        {
+            get => _items.Count;
+        }
+
+        public void Add2(IPlaylistItem newItem)
+        {
+            _items.Add(newItem);
+        }
+
+        public void Remove2(IPlaylistItem iItemToRemove)
+        {
+            _items.Remove(iItemToRemove);
+        }
+
+        public void RemoveAll()
+        {
+            _items.Clear();
         }
 
         public void Dispose()
