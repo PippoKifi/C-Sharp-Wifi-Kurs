@@ -68,20 +68,11 @@
     <Compile Include="Form_Main.Designer.cs">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Question_DummyForCloning.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_Question_DummyForCloning.Designer.cs">
-      <DependentUpon>Form_Question_DummyForCloning.cs</DependentUpon>
-    </Compile>
     <Compile Include="ListViewItem_PlaylistItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_Question_DummyForCloning.resx">
-      <DependentUpon>Form_Question_DummyForCloning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
