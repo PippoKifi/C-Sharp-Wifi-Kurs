@@ -29,6 +29,7 @@ namespace Wifi.PlaylistEditor
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_NeuePlalistAnlegen = new System.Windows.Forms.ToolStripButton();
@@ -72,6 +73,7 @@ namespace Wifi.PlaylistEditor
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip6 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel_ItemPath = new System.Windows.Forms.ToolStripLabel();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStrip3.SuspendLayout();
@@ -488,6 +490,12 @@ namespace Wifi.PlaylistEditor
             this.toolStripLabel_ItemPath.Size = new System.Drawing.Size(187, 22);
             this.toolStripLabel_ItemPath.Text = "C:\\Temp\\MySongs\\CoolerSong.mp3";
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(32, 32);
+            this.imageList1.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            // 
             // Form_Main
             // 
             this.AllowDrop = true;
@@ -577,6 +585,7 @@ namespace Wifi.PlaylistEditor
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStrip toolStrip6;
         private System.Windows.Forms.ToolStripLabel toolStripLabel_ItemPath;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
