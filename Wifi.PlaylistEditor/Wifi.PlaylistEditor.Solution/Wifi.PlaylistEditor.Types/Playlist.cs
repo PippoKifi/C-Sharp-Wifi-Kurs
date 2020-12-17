@@ -1,60 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Wifi.PlaylistEditor.Types
 {
-    public class PlayList : IDisposable
+    public class Playlist : IPlaylist
     {
         private string _name;
-        private string _autor;
-        private Guid _playlistGuid;
-        private TimeSpan _playList_Duration;
+        private string _author;
         private DateTime _createdAt;
-        private List<IPlaylistItem> _items; //Playlist "HAT EIN" IPlaylistItems
-        
- 
+        private List<IPlaylistItem> _items;
 
-        //################
-        //### KONSTRUKTOR ###
-        public PlayList(string name, string autor)
+        public Playlist(string name, string author, DateTime createdAt)
         {
             _name = name;
-            _autor = autor;
+            _author = author;
+            _createdAt = createdAt;
+
             _items = new List<IPlaylistItem>();
-            _playlistGuid = Guid.NewGuid();
-            _playList_Duration = TimeSpan.Zero;
         }
 
 
-        //#####################
-        //### EIGENSCHAFTEN ###
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        public string Autor
-        {
-            get { return _autor; }
-            set { _autor = value; }
-        }
-
-        public IEnumerable<IPlaylistItem> ItemList //IEnumerable um die List so einfach wie möglich zu halten nach aussen (Nur Leserechte auf die Liste)
+        public IEnumerable<IPlaylistItem> Items
         {
             get { return _items; }
-        }
-
-        public Guid PlayListGuid
-        {
-            get { return _playlistGuid; }
-            set { _playlistGuid = value; }
-        }
-
-        public TimeSpan PlayList_Duration
-        {
-            get { return _playList_Duration; }
-            set { _playList_Duration = value; }
         }
 
         public DateTime CreatedAt
@@ -62,73 +33,52 @@ namespace Wifi.PlaylistEditor.Types
             get { return _createdAt; }
         }
 
-
-        //################
-        //### METHODEN ###
-
-        /// <summary>
-        /// Fügt eine durch das Interface 'IPlaylistItems' typisierte-Instance der Playlist hinzu
-        /// </summary>
-        /// <param name="ItemToAdd"></param>
-        public void Add(IPlaylistItem ItemToAdd)
+        public string Author
         {
-            _items.Add(ItemToAdd);
-            PLayListDuration(ItemToAdd.PlayList_Guid);
+            get { return _author; }
+            set { _author = value; }
         }
 
-        public void Remove()
+        public string Name
         {
-
+            get { return _name; }
+            set { _name = value; }
         }
 
-        public void Clear()
+        public TimeSpan Duration
         {
-
-        }
-
-        public void Load(IPlaylistItem ItemToAdd)
-        {
-            
-            
-
-            
-            PLayListDuration(ItemToAdd.PlayList_Guid);
-        }
-
-        public void Save()
-        {
-
-        }
-        
-
-
-        /// <summary>
-        /// Berechnet die gesamte Spielzeit von der angegebenen Playlist
-        /// </summary>
-        /// <param name="Playlist_Guid"></param>
-        /// <returns>Spielzeit in TimeSpan-Format</returns>
-        public TimeSpan PLayListDuration(Guid Playlist_Guid)
-        {
-            foreach (var playlistItem in _items)
+            get
             {
-                if (playlistItem.PlayList_Guid == Playlist_Guid)
+                TimeSpan duration = TimeSpan.Zero;
+
+                foreach (var item in _items)
                 {
-                    _playList_Duration += playlistItem.Duration;
+                    duration = duration.Add(item.Duration);
                 }
+
+                return duration;
             }
-
-            return _playList_Duration;
         }
 
-        public void Dispose()
+        public int Count
         {
-            // close Handle;
-            //this.Close();
-
-            // make sure Finalizer will not be called...
-            GC.SuppressFinalize(this);
+            get => _items.Count;
         }
 
 
+        public void Add(IPlaylistItem newItem)
+        {
+            _items.Add(newItem);
+        }
+
+        public void Remove(IPlaylistItem itemToRemove)
+        {
+            _items.Remove(itemToRemove);
+        }
+
+        public void ClearAllItems()
+        {
+            _items.Clear();
+        }
     }
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8017DBE6-44A4-488B-8880-CA3A85195781}</ProjectGuid>
+    <ProjectGuid>{D8CF8C6A-196E-43B6-90BA-0017F6B257DA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Wifi.PlaylistEditor.Types</RootNamespace>
@@ -42,11 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileType.cs" />
+    <Compile Include="IPlaylist.cs" />
     <Compile Include="IPlaylistItem.cs" />
     <Compile Include="IPlaylistRepository.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Playlist.cs" />
-    <Compile Include="PlayListArchiv.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

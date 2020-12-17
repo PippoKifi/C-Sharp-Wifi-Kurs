@@ -3,18 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Wifi.PlaylistEditor.Types;
-
-//private IPlaylistItem _fixture;
-
-//COVERAGE (Unter Extensions -> Manager ) -> Teste
-//3 Must Have (AAA-Prinzip)
-//  ---1> Arrange (Arrangieren | Variablen vorbereiten)
-//  ---2> Act (Ausführen)
-//  ---3> Assert (Prüfen)
-
 
 namespace Wifi.PlaylistEditor.Items.Tests
 {
@@ -22,16 +14,31 @@ namespace Wifi.PlaylistEditor.Items.Tests
     public class Mp3ItemTests
     {
         private IPlaylistItem _fixture;
-        Guid myGuid = Guid.NewGuid();
-        FileInfo myTestFile = new FileInfo("Dummmy-Path");
 
+        private string _mp3WithThumbnailPath;
+        private string _mp3WithNoThumbnailPath;
+
+        [OneTimeSetUp]
+        public void InitTestFiles()
+        {
+            var path = Assembly.GetExecutingAssembly().Location;
+            path = Path.GetDirectoryName(path);
+
+            _mp3WithThumbnailPath = Path.Combine(path, @"Assets\001 - Bruno Mars - Grenade.mp3");
+            _mp3WithNoThumbnailPath = Path.Combine(path, @"Assets\002 - Lena - Taken By A Stranger.mp3");
+        }
+
+
+        [SetUp]
+        public void TestInit()
+        {            
+            _fixture = new Mp3Item(_mp3WithThumbnailPath);
+        }
 
         [Test]
         public void GetTitle()
         {
-            //arrange
-            myTestFile = new FileInfo(@"C:\Users\user\Music\TestMediaFiles\001 - Bruno Mars - Grenade.mp3");
-            _fixture = new Mp3Item(myTestFile, myGuid);
+            //arrange            
 
             //act
             var title = _fixture.Title;
@@ -45,8 +52,6 @@ namespace Wifi.PlaylistEditor.Items.Tests
         public void GetDuration()
         {
             //arrange
-            myTestFile = new FileInfo(@"C:\Users\user\Music\TestMediaFiles\001 - Bruno Mars - Grenade.mp3");
-            _fixture = new Mp3Item(myTestFile, myGuid);
 
             //act
             var duration = _fixture.Duration;
@@ -56,10 +61,59 @@ namespace Wifi.PlaylistEditor.Items.Tests
         }
 
         [Test]
+        public void GetArtist()
+        {
+            //arrange
+
+            //act
+            var artist = _fixture.Artist;
+
+            //assert            
+            Assert.That(artist, Is.EqualTo("Bruno Mars"));
+        }
+
+        [Test]
+        public void GetPath()
+        {            
+            //arrange
+
+            //act
+            var path = _fixture.Path;
+
+            //assert            
+            Assert.That(path, Is.EqualTo(_mp3WithThumbnailPath));
+        }
+
+        [Test]
+        public void GetThumbnail()
+        {            
+            //arrange
+
+            //act
+            var thumbnail = _fixture.Thumbnail;
+
+            //assert            
+            Assert.That(thumbnail, Is.Not.Null);            
+        }
+
+        [Test]
+        public void GetThumbnail_WithMp3FileWithNoImage()
+        {                         
+            //arrange
+            _fixture = new Mp3Item(_mp3WithNoThumbnailPath);
+
+            //act
+            var thumbnail = _fixture.Thumbnail;
+
+            //assert            
+            Assert.That(thumbnail, Is.Null);
+        }
+
+        [Test]
         public void GetTitle_FilePathIsNull()
         {
             //arrange
-            var fixture = new Mp3Item(null, myGuid);
+            var fixture = new Mp3Item(null);
 
             //act
             var title = fixture.Title;
@@ -72,7 +126,7 @@ namespace Wifi.PlaylistEditor.Items.Tests
         public void GetTitle_FilePathIsEmpty()
         {
             //arrange
-            var fixture = new Mp3Item(null, myGuid);
+            var fixture = new Mp3Item(string.Empty);
 
             //act
             var title = fixture.Title;
@@ -85,8 +139,7 @@ namespace Wifi.PlaylistEditor.Items.Tests
         public void GetTitle_FilePathNotExists()
         {
             //arrange
-            myTestFile = new FileInfo(@"c:\mysupermusic\hits\gandalfSong.mp3");
-            var fixture = new Mp3Item(myTestFile, myGuid);
+            var fixture = new Mp3Item(@"c:\mysupermusic\hits\gandalfSong.mp3");
 
             //act
             var title = fixture.Title;
