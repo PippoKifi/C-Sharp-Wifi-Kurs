@@ -25,7 +25,7 @@ namespace Wifi.PlaylistEditor
         {
             frm_newPlaylist newPlaylistDialog = new frm_newPlaylist();
 
-            if(newPlaylistDialog.ShowDialog() != DialogResult.OK)
+            if (newPlaylistDialog.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
@@ -59,7 +59,7 @@ namespace Wifi.PlaylistEditor
                 index++;
             }
 
-            listView1.LargeImageList = imageList1;            
+            listView1.LargeImageList = imageList1;
         }
 
         private void DisplayPlaylistDetails(IPlaylist playlist)
@@ -85,6 +85,11 @@ namespace Wifi.PlaylistEditor
             //update view
             DisplayPlaylistDetails(_playlist);
             DisplayPlaylistItems(_playlist);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
